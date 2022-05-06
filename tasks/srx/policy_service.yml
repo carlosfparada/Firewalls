@@ -3,5 +3,7 @@
 
 - name: set variable for policy services / applications
   set_fact:
-    fw_conf_lines: "{{ fw_conf_lines + ['set security policies from-zone ' + item + ' to-zone ' + _dest_zone + ' policy ' + _rule.name + ' match application ' + srx_services[_service] ] }}"
-  loop: "{{ _src_zone }}"
+    fw_conf_lines: "{{ fw_conf_lines + ['set security policies from-zone ' + item[0] + ' to-zone ' + item[1] + ' policy ' + _rule.name + ' match application ' + srx_services[_service] ] }}"
+  with_nested: 
+    - "{{ _src_zone }}"
+    - "{{ _dest_zone }}"
