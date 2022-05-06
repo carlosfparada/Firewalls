@@ -13,10 +13,6 @@
     src: ../../templates/srx/zones.j2
     update: merge
     src_format: text
-  register: json
-  
-- debug:
-    var: json 
   
 - name: Configure policies with Jinja templates
   junipernetworks.junos.junos_config:
