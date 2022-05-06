@@ -1,10 +1,11 @@
 ---
 
-- name: Firewalls Juniper SRX
+- name: Firewalls Juniper SRX - Config
   hosts: srx
   connection: local
   gather_facts: no
-  
+  vars:
+    fw_methode_template: false
   tasks:
   - include_vars: ../../defaults/main.yml
   

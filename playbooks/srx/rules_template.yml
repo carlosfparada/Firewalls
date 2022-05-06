@@ -1,0 +1,12 @@
+---
+
+- name: Firewalls Juniper SRX - Template
+  hosts: srx
+  connection: local
+  gather_facts: no
+  vars:
+    fw_methode_template: true
+  tasks:
+  - include_vars: ../../defaults/main.yml
+  
+  - include_tasks: ../../tasks/srx/rule_main.yml
