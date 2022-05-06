@@ -1,14 +1,17 @@
 security {
     zones{
-        {% for rule in fw_rules %}
-        security-zone {{ rule.src.zone}} {
+    {% for rule in fw_rules %}
+        {% for zone in rule.src.zone %}
+        security-zone {{ zone}} {
             address-book {
                 {% for address in rule.src.addresses %}
                 address {{ address.name }} {{ address.ipv4 }}/32;
                 {% endfor %}
             }
         }
-        security-zone {{ rule.dest.zone}} {
+        {% endfor %}
+        {% for zone in rule.src.zone %}
+        security-zone {{ zone}} {
             address-book {
                 {% for address in rule.dest.addresses %}
                 address {{ address.name }} {{ address.ipv4 }}/32;
@@ -16,5 +19,6 @@ security {
             }
         }
         {% endfor %}
+    {% endfor %}
     }
 }

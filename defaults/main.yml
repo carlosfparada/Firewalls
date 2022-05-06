@@ -14,41 +14,15 @@ fw_backup_dir: /tmp
 
 fw_conf_lines: []
 
-fw_rules:
-  - name: rule_A
-    src:
-      zone: "private"
-      addresses:
-        - name: "inside_host_D"
-          ipv4: "10.10.2.3"
-    dest:
-      zone: "public"
-      addresses:
-        - name: "pub_host_A"
-          type: host
-          ipv4: "7.7.7.1"
-        - name: "pub_host_B"
-          type: host
-          ipv4: "7.7.7.2"
-    services:
-      - http
-      - https
-    rule:
-      action: "permit"
-      logging_init: false
-      logging_close: true
-
 # fw_rules:
 #   - name: rule_A
 #     src:
-#       zone:
-#         - "private"
+#       zone: "private"
 #       addresses:
 #         - name: "inside_host_D"
 #           ipv4: "10.10.2.3"
 #     dest:
-#       zone: 
-#         - "public"
+#       zone: "public"
 #       addresses:
 #         - name: "pub_host_A"
 #           type: host
@@ -63,6 +37,32 @@ fw_rules:
 #       action: "permit"
 #       logging_init: false
 #       logging_close: true
+
+fw_rules:
+  - name: rule_A
+    src:
+      zone:
+        - "private"
+      addresses:
+        - name: "inside_host_D"
+          ipv4: "10.10.2.3"
+    dest:
+      zone: 
+        - "public"
+      addresses:
+        - name: "pub_host_A"
+          type: host
+          ipv4: "7.7.7.1"
+        - name: "pub_host_B"
+          type: host
+          ipv4: "7.7.7.2"
+    services:
+      - http
+      - https
+    rule:
+      action: "permit"
+      logging_init: false
+      logging_close: true
 
 # if fw_survey: true
 # this variables are valid for survey
