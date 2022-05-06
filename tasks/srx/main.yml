@@ -7,5 +7,8 @@
       tags: facts
   tags: [facts]
 
-- include_tasks: rule_main.yml
+- include_tasks: rule_main_config.yml
+  tags: [rule]
+
+- include_tasks: rule_main_template.yml
   tags: [rule]
