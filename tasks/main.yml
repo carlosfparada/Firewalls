@@ -5,10 +5,10 @@
   when: fw_survey
   tags: [rule]
 
-- include_tasks: srx/main.yml
+- include_tasks: ../tasks/srx/main.yml
   when: inventory_hostname in groups['srx']
   tags: [always]
 
-- include_tasks: panos/main.yml
+- include_tasks: ../tasks/panos/main.yml
   when: inventory_hostname in groups['panos']
   tags: [always]
