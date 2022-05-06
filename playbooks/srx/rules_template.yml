@@ -1,6 +1,6 @@
 ---
 
-- name: Firewalls Juniper SRX - Template
+- name: Firewalls Juniper SRX - Rules Template
   hosts: srx
   connection: local
   gather_facts: no

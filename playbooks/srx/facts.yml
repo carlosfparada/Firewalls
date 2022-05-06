@@ -1,6 +1,6 @@
 ---
 
-- name: Firewalls Juniper SRX
+- name: Firewalls Juniper SRX facts
   hosts: srx
   connection: local
   gather_facts: no

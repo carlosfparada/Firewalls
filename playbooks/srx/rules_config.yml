@@ -1,6 +1,6 @@
 ---
 
-- name: Firewalls Juniper SRX - Config
+- name: Firewalls Juniper SRX - Rules config
   hosts: srx
   connection: local
   gather_facts: no
