@@ -1,6 +1,6 @@
 ---
 
-- name: Firewalls Palo Alto
+- name: Firewalls Palo Alto facts
   hosts: panos
   connection: local
   gather_facts: no
