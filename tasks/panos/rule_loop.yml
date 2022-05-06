@@ -34,8 +34,8 @@
     provider: "{{ panos_provider }}"
     rule_name: "{{ _rule.name }}"
     description: "{{ _rule.description | default(omit) }}"
-    source_zone: ["{{ _rule.src.zone }}"]
-    destination_zone: ["{{ _rule.dest.zone }}"]
+    source_zone: "{{ _rule.src.zone }}"
+    destination_zone: "{{ _rule.dest.zone }}"
     source_ip: "{{ _src_ips }}"
     destination_ip: "{{ _dest_ips }}"
     category: ['any']
