@@ -1,7 +1,7 @@
 ---
 
 - name: Firewalls
-  hosts: srx
+  hosts: all
   connection: local
   gather_facts: no
   
