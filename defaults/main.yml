@@ -18,7 +18,7 @@ fw_rules:
   - name: rule_A
     src:
       zone:
-        - "internal"
+        - "private"
       addresses:
         - name: "inside_host_D"
           ipv4: "10.10.2.3"
