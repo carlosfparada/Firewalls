@@ -1,0 +1,11 @@
+---
+
+- name: Firewalls Palo Alto
+  hosts: panos
+  connection: local
+  gather_facts: no
+  
+  tasks:
+  - include_vars: ../../defaults/main.yml
+  
+  - include_tasks: ../../tasks/panos/main.yml

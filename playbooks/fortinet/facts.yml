@@ -1,0 +1,11 @@
+---
+
+- name: Firewalls Fortinet facts
+  hosts: fortinet
+  connection: local
+  gather_facts: no
+  
+  tasks:
+  - include_vars: ../../defaults/main.yml
+  
+  - include_tasks: ../../tasks/fortinet/facts.yml
