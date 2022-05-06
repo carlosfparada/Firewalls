@@ -17,12 +17,14 @@ fw_conf_lines: []
 fw_rules:
   - name: rule_A
     src:
-      zone: "internal"
+      zone:
+        - "internal"
       addresses:
         - name: "inside_host_D"
           ipv4: "10.10.2.3"
     dest:
-      zone: "public"
+      zone: 
+        - "public"
       addresses:
         - name: "pub_host_A"
           type: host
