@@ -1,6 +1,6 @@
 ---
 
-- name: gather facts from srx
+- name: Gather facts from srx
   junipernetworks.junos.junos_facts:
     gather_subset:
       - "!config"

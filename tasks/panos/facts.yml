@@ -1,6 +1,6 @@
 ---
 
-- name: gather facts from PanOS
+- name: Gather facts from PanOS
   paloaltonetworks.panos.panos_facts:
     provider: "{{ panos_provider }}"
     gather_subset: 
