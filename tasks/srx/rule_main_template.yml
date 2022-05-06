@@ -16,16 +16,8 @@
   when: fw_rules | length > 0 and not fw_methode_template | bool
   tags: [rule]
 
-- include_tasks: 
-    file: fire_config.yml
-    apply:
-      tags: rule
-  when: not fw_methode_template | bool
-  tags: [rule]
-
 - include_tasks:
     file: rule_template.yml
     apply: 
       tags: rule
-  when: fw_methode_template | bool
   tags: [rule]
