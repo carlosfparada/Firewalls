@@ -1,7 +1,7 @@
 ---
 
 - name: Firewalls
-  hosts: all
+  hosts: srx,panos
   connection: local
   gather_facts: false
   
