@@ -6,8 +6,7 @@
 
 - name: Set variable for policy addresses
   set_fact: 
-    #fw_conf_lines: "{{ fw_conf_lines + ['set security policies from-zone ' + item[0] + ' to-zone ' + item[1] + ' policy ' + _rule.name + ' match ' + _direction + '-address ' + _address.name] }}"
-    fw_conf_lines: "{{ fw_conf_lines + ['set security policies from-zone ' + 'item[0]' + ' to-zone ' + 'item[1]' + ' policy ' + _rule.name + ' match ' + _direction + '-address ' + _address.name] }}"
+    fw_conf_lines: "{{ fw_conf_lines + ['set security policies from-zone ' + item[0] + ' to-zone ' + item[1] + ' policy ' + _rule.name + ' match ' + _direction + '-address ' + _address.name] }}"
   with_nested: 
     - "{{ _src_zone }}"
     - "{{ _dest_zone }}"
