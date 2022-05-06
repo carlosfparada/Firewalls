@@ -1,7 +1,7 @@
 ---
 
 - name: set variable for rules 
-  include_vars: vars/survey_acls.yml
+  include_vars: ../vars/survey_acls.yml
   when: fw_survey
   tags: [rule]
 
