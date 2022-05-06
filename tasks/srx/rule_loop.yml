@@ -57,25 +57,25 @@
   set_fact:
     fw_conf_lines: "{{ fw_conf_lines + ['set security policies from-zone ' + item[0] + ' to-zone ' + item[1] + ' policy ' + _rule.name + ' then ' + _rule.rule.action] }}"
   with_nested: 
-    - "{{ _src_zone }}"
-    - "{{ _dest_zone }}"
+    - "{{ _rule.src.zone }}"
+    - "{{ _rule.dest.zone }}"
 
 - name: Set log session-init 
   set_fact:
-    fw_conf_lines: "{{ fw_conf_lines + ['set security policies from-zone ' + item[0] + ' to-zone ' + item[1] + ' policy ' + _rule.name + ' then log session-init'] }}"
+    fw_conf_lines: "{{ fw_conf_lines + ['set security policies from-zone ' + item[0] + ' to-zone ' + _rule.dest.zone + ' policy ' + _rule.name + ' then log session-init'] }}"
   with_nested: 
-    - "{{ _src_zone }}"
-    - "{{ _dest_zone }}"
+    - "{{ _rule.src.zone }}"
+    - "{{ _rule.dest.zone }}"
   when: _rule.rule.logging_init is defined and _rule.rule.logging_init
 
 - name: Set log session-init 
   set_fact:
     fw_conf_lines: "{{ fw_conf_lines + ['set security policies from-zone ' + item[0] + ' to-zone ' + item[1] + ' policy ' + _rule.name + ' then log session-close'] }}"
-  with_nested: 
-    - "{{ _src_zone }}"
-    - "{{ _dest_zone }}"
   when: _rule.rule.logging_close is defined and _rule.rule.logging_close
-
+  with_nested:
+    - "{{ _rule.src.zone }}"
+    - "{{ _rule.dest.zone }}"
+    
 - name: Policy config statements
   debug:
     var: fw_conf_lines
