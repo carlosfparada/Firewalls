@@ -1,5 +1,7 @@
 ---
-
+#config system global
+#  set rest-api enable
+#end
 - name: Firewalls Fortinet rules
   hosts: fortinet
   connection: httpapi
