@@ -2,7 +2,7 @@
 
 - name: Firewalls Palo Alto
   hosts: panos
-  connection: local
+  connection: httpapi
   gather_facts: no
   
   tasks:
