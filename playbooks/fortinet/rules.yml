@@ -1,11 +1,11 @@
 ---
 
-- name: Firewalls Palo Alto rules
-  hosts: panos
+- name: Firewalls Fortinet rules
+  hosts: fortinet
   connection: httpapi
   gather_facts: no
   
   tasks:
   - include_vars: ../../defaults/main.yml
   
-  - include_tasks: ../../tasks/panos/rule_main.yml
+  - include_tasks: ../../tasks/fortinet/rule_main.yml
