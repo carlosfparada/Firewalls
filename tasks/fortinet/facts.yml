@@ -9,7 +9,7 @@
     
 - name: Gather facts from PanOS
   fortinet.fortios.fortios_configuration_fact:
-    provider: "{{ panos_provider }}"
+    #provider: "{{ panos_provider }}"
     selectors:
       - selector: "firewall_policy"
       - selector: "system_interface"
