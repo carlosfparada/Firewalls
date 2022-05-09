@@ -1,15 +1,15 @@
 ---
 
-#  connection: httpapi
+#  
 
 # vars:
+#     ansible_connection: httpapi
 #     ansible_httpapi_use_ssl: yes
 #     ansible_httpapi_validate_certs: no
 #     ansible_httpapi_port: 443
     
 - name: Gather facts from PanOS
   fortinet.fortios.fortios_configuration_fact:
-    #provider: "{{ panos_provider }}"
     selectors:
       - selector: "firewall_policy"
       - selector: "system_interface"
