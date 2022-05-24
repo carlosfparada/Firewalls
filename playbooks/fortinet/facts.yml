@@ -1,13 +1,11 @@
 ---
-#config system global
-#  set rest-api enable
-#end
-- name: Firewalls Fortinet facts
-  hosts: fortinet
-  connection: httpapi
+
+- name: Firewalls Palo Alto facts
+  hosts: panos
+  connection: local
   gather_facts: no
   
   tasks:
   - include_vars: ../../defaults/main.yml
   
-  - include_tasks: ../../tasks/fortinet/facts.yml
+  - include_tasks: ../../tasks/panos/facts.yml
