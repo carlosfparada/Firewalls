@@ -10,9 +10,9 @@
     file: rule_loop.yml
     apply:
       tags: rule
-  loop: "{{ fw_rules }}"
+  loop: "{{ fg_fw_rules }}"
   loop_control:
     label: "{{ _rule.name }}"
     loop_var: _rule
-  when: fw_rules | length > 0 
+  when: fg_fw_rules | length > 0 
   tags: [rule]
