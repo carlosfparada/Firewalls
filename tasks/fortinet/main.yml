@@ -53,9 +53,6 @@
 
 # Token: 1xf70f03r00c8p5fH5chpn5GQ7rhmQ
 
-- include_tasks: 
-    file: facts.yml
-    apply:
-      tags: facts
+- include_tasks: facts.yml
 
 - include_tasks: rule_main.yml
