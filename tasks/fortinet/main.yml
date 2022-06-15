@@ -1,5 +1,33 @@
 ---
 
+# The default username for your Fortinet router is admin. The default password is (blank).
+
+# License available for 15 days after first use
+
+# Set the IP address and netmask of the LAN interface:
+#   config system interface
+#     edit <port>
+#       set mode static
+#       set ip <ip_address> <netmask>
+#       set allowaccess (http https ping ssh telnet)
+#     end
+
+# where:
+#   <port> can be one of port1- port4.
+#   <ip_address> is the interface IP address.
+#   <netmask> is the interface netmask.
+
+# Sample Command:
+#   config system interface
+#     edit port1
+#       set mode static
+#       set ip 192.168.100.159 255.255.255.0
+#       set allowaccess ping https ssh
+#     end
+# 
+# To save configs permanently
+#   execute cfg save
+
 - include_tasks: 
     file: facts.yml
     apply:
