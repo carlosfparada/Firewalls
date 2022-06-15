@@ -1,8 +1,8 @@
 ---
-# main rule for PanOS
+# main rule for Fortigate
 
-- name: Include 
-  include_vars: ../../vars/panos_services.yml
+- name: include 
+  include_vars: ../../vars/fg_services.yml
   tags: [rule]
 
 - name: Start loop for rules
