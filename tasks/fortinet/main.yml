@@ -3,7 +3,9 @@
 # The default username for your Fortinet router is admin. The default password is (blank).
 
 # License available for 15 days after first use
-
+#
+# https://help.fortinet.com/fdb/5-0-0/html/source/tasks/t_network_configuration_cli.html
+#
 # Set the IP address and netmask of the LAN interface:
 #   config system interface
 #     edit <port>
