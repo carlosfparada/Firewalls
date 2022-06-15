@@ -10,11 +10,11 @@
     
 - name: Gather facts from PanOS
   fortinet.fortios.fortios_configuration_fact:
+    vdom: "root"
     selectors:
       - selector: "firewall_policy"
       - selector: "system_interface"
       - selector: "firewall_address"
-
   register: _fortinet_facts
 
 - debug:
