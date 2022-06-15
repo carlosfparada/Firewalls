@@ -3,7 +3,6 @@
 
 - name: include 
   include_vars: ../../vars/fg_services.yml
-  tags: [rule]
 
 - name: Start loop for rules
   include_tasks:
@@ -15,4 +14,3 @@
     label: "{{ _rule.name }}"
     loop_var: _rule
   when: fg_fw_rules | length > 0 
-  tags: [rule]

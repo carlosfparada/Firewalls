@@ -21,7 +21,6 @@
     label: "{{ _address.ipv4 }}"
     loop_var: _address
   when: _rule.src.addresses | length > 0
-  tags: [rule]
 
 - set_fact:
     _intf: "{{ _rule.dest.zone }}"
@@ -36,7 +35,6 @@
     label: "{{ _address.ipv4 }}"
     loop_var: _address
   when: _rule.src.addresses | length > 0
-  tags: [rule]
 
 - name: Generate list of source addresses
   set_fact: 
