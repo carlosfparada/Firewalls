@@ -9,7 +9,7 @@
     _action: "{{ 'accept' if _rule.rule.action == 'permit' else 'deny' }}"
     _utm_status: "{{ 'enable' if _rule.rule.ips_sensor != '' else 'disable' }}"
     _next_policyid: 0
-    _intf: "{{ _rule.src.zone }}"
+    _intf: "{{ _rule.src.interface }}"
 
 - name: Loop src IP address list
   include_tasks:
@@ -23,7 +23,7 @@
   when: _rule.src.addresses | length > 0
 
 - set_fact:
-    _intf: "{{ _rule.dest.zone }}"
+    _intf: "{{ _rule.dest.interface }}"
   
 - name: Loop dest IP address list
   include_tasks:
@@ -86,10 +86,10 @@
       name: "{{ _rule.name }}" 
       srcaddr: "{{ _src_names }}"
       srcintf:
-        - name: "{{ _rule.src.zone }}"
+        - name: "{{ _rule.src.interface }}"
       dstaddr: "{{ _dest_names }}"
       dstintf:
-        - name: "{{ _rule.dest.zone }}"
+        - name: "{{ _rule.dest.interface }}"
       service: "{{ _services }}"
       action: "{{ _action }}" 
       ips_sensor: "{{ _rule.rule.ips_sensor | default(omit) }}"
