@@ -50,8 +50,12 @@
 #     Click Regenerate.
 #   In CLI console, use the CLI command below:
 #     execute api-user generate-key [API user name]
-
+#
 # Token: 1xf70f03r00c8p5fH5chpn5GQ7rhmQ
+#
+# View firewall policies (rules):
+#   UI: Policy & Objects -> Firewall Policy
+#   CLI: show firewall policy 
 
 - include_tasks: facts.yml
 
