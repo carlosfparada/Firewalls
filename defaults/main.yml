@@ -81,3 +81,26 @@ fg_fw_rules:
       logging_init: false
       logging_close: true
       ips_sensor: "default"
+  - name: rule_D
+    src:
+      zone: "port3"
+      addresses:
+        - name: "pub_host_E"
+          type: host
+          ipv4: "7.7.7.3"
+        - name: "pub_host_F"
+          type: host
+          ipv4: "7.7.7.4"
+    dest:
+      zone: "port2"
+      addresses:
+        - name: "inside_host_C"
+          ipv4: "10.10.2.4"
+    services:
+      - http
+      - https
+    rule:
+      action: "permit"
+      logging_init: false
+      logging_close: true
+      ips_sensor: "default"
