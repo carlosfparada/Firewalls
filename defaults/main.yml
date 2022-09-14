@@ -38,7 +38,29 @@ fw_rules:
       logging_init: false
       logging_close: true
       ips_sensor: "default"
-
+  - name: rule_B
+    src:
+      zone: "private"
+      addresses:
+        - name: "inside_host_C"
+          ipv4: "10.10.2.4"
+    dest:
+      zone: "public"
+      addresses:
+        - name: "pub_host_A"
+          type: host
+          ipv4: "7.7.7.1"
+        - name: "pub_host_B"
+          type: host
+          ipv4: "7.7.7.2"
+    services:
+      - http
+      - https
+    rule:
+      action: "permit"
+      logging_init: false
+      logging_close: true
+      ips_sensor: "default"
 
 # if fw_survey: true
 # this variables are valid for survey
