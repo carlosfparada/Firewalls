@@ -8,7 +8,7 @@
 #     ansible_httpapi_validate_certs: no
 #     ansible_httpapi_port: 443
     
-- name: Gather facts from PanOS
+- name: Gather facts from Fortinet
   fortinet.fortios.fortios_configuration_fact:
     vdom: "{{ fw_fg_vdom }}"
     access_token: "{{ fw_access_token }}"
