@@ -2,7 +2,7 @@
 
 - name: Firewalls Fortinet facts
   hosts: fortinet
-  connection: local
+  connection: httpapi
   gather_facts: no
   
   tasks:
