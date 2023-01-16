@@ -78,7 +78,7 @@ fw_rule_logging_close: false
 
 # fortigate
 fw_fg_vdom: "root"
-fw_access_token: wp5c9fxy4y0gm8g9G6ntQ5bc169jz1
+fw_access_token: y38nb76fg0QHfHp1b46kNhfGqQq9r5
 fg_fw_rules:
   - name: rule_C
     src:
