@@ -1,13 +1,11 @@
 ---
-#config system global
-#  set rest-api enable
-#end
-- name: Firewalls Fortinet
-  hosts: fortinet
-  connection: httpapi
+
+- name: Firewalls ASA
+  hosts: asa
+  connection: network_cli
   gather_facts: no
   
   tasks:
   - include_vars: ../../defaults/main.yml
   
-  - include_tasks: ../../tasks/fortinet/main.yml
+  - include_tasks: ../../tasks/asa/main.yml

@@ -1,0 +1,12 @@
+---
+
+- name: Configure interfaces
+  ansible.builtin.asa_config:
+    lines:
+    - "description {{item.description}}"
+    - "nameif {{item.nameif}}"
+    - "security-level {{item.security_level}}"
+    - "ip address {{item.address|ipaddr('address')}} {{item.address|ipaddr('netmask')}}"
+    parents: "interface {{item.name}}"
+  loop: "{{interfaces}}"
+

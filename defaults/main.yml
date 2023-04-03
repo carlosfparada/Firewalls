@@ -126,3 +126,16 @@ fg_fw_rules:
       logging_init: false
       logging_close: true
       ips_sensor: "default"
+
+# Cisco ASA
+interfaces:
+- name: GigabitEthernet0/0
+  description: Inside interface
+  nameif: Inside
+  security_level: 50
+  address: 192.168.1.1/24
+- name: GigabitEthernet0/1
+  description: Outside interface
+  nameif: Outside
+  security_level: 50
+  address: 192.168.2.2/24
