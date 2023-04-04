@@ -2,4 +2,4 @@
 
 - include_tasks: facts.yml
 
-- include_tasks: rule_main.yml
+- include_tasks: rules.yml
