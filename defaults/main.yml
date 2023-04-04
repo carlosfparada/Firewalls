@@ -139,3 +139,11 @@ interfaces:
   nameif: Outside
   security_level: 50
   address: 192.168.2.2/24
+
+zones:
+- name: inside
+  interfaces:
+  - GigabitEthernet0/0
+- name: outside
+  interfaces:
+  - GigabitEthernet0/1
