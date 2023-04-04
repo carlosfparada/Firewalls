@@ -9,6 +9,6 @@
   tasks:
   - include_vars: ../../defaults/main.yml
 
-  - include_tasks: ../../tasks/asa/config.yml
+  - include_tasks: ../../tasks/asa/rules.yml
 
 #  - include_tasks: ../../tasks/asa/rule_main.yml
