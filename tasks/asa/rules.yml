@@ -27,7 +27,11 @@
 
 
 
-
+# hostname(config)# access-list OUTSIDE extended permit tcp host 10.1.1.14 host 209.165.200.225 eq www
+# hostname(config)# access-list OUTSIDE extended permit tcp host 10.1.2.67 host 209.165.200.225 eq www
+# hostname(config)# access-list OUTSIDE extended permit tcp host 10.1.3.34 host 209.165.200.225 eq www
+# hostname(config)# access-group OUTSIDE out interface outside
+#
 # asa
 # asa_fw_rules:
 #   - name: rule_C
