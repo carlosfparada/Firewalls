@@ -1,7 +1,7 @@
 ---
 
 - name: Gather facts from Cisco ASA
-  cisco.cisco.asa_facts:
+  cisco.asa.asa_facts:
     gather_subset: all
   register: _asa_facts
 
