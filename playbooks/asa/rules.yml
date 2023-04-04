@@ -4,6 +4,7 @@
   hosts: asa
   connection: network_cli
   gather_facts: no
+  become: true
   
   tasks:
   - include_vars: ../../defaults/main.yml
