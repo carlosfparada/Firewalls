@@ -132,12 +132,12 @@ interfaces:
 - name: GigabitEthernet0/0
   description: Inside interface
   nameif: Inside
-  security_level: 50
+  security_level: 80
   address: 192.168.1.1/24
 - name: GigabitEthernet0/1
   description: Outside interface
   nameif: Outside
-  security_level: 50
+  security_level: 20
   address: 192.168.2.2/24
 
 zones:
