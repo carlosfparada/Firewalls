@@ -1,0 +1,73 @@
+{% for rule in asa_fw_rules %}
+  {% for source in rule.source.addresses %}
+    {% for dest in rule.dest.addresses %}
+      {% for service in rule.services %}
+access-list {{rule.name}} extended {{rule.rule.action}} {{rule.protocol}} host {{source.ipv4}} host {{dest.ipv4}} eq {{service}}
+      {% endfor %}
+    {% endfor %}
+  {% endfor %}
+access-group {{rule.name}} {{rule.name}} interface {{interface}}
+{% endfor %}
+
+
+
+
+# hostname(config)# access-list OUTSIDE extended permit tcp host 10.1.1.14 host 209.165.200.225 eq www
+# hostname(config)# access-list OUTSIDE extended permit tcp host 10.1.2.67 host 209.165.200.225 eq www
+# hostname(config)# access-list OUTSIDE extended permit tcp host 10.1.3.34 host 209.165.200.225 eq www
+# hostname(config)# access-group OUTSIDE out interface outside
+#
+# asa
+# asa_fw_rules:
+#   - name: rule_C
+#     interface: "outside"
+#     inout: in
+#     src:
+#       interface: "outside"
+#       addresses:
+#         - name: "inside_host_D"
+#           ipv4: "10.10.2.3"
+#     dest:
+#       interface: "inside"
+#       addresses:
+#         - name: "pub_host_A"
+#           type: host
+#           ipv4: "7.7.7.1"
+#         - name: "pub_host_B"
+#           type: host
+#           ipv4: "7.7.7.2"
+#     protocol: tcp
+#     services:
+#       - http
+#       - https
+#     rule:
+#       action: "permit"
+#       #logging_init: false
+#       #logging_close: true
+#       #ips_sensor: "default"
+#   - name: rule_D
+#     interface: "outside"
+#     inout: in
+#     src:
+#       interface: "outside"
+#       addresses:
+#         - name: "pub_host_E"
+#           type: host
+#           ipv4: "7.7.7.3"
+#         - name: "pub_host_F"
+#           type: host
+#           ipv4: "7.7.7.4"
+#     dest:
+#       interface: "inside"
+#       addresses:
+#         - name: "inside_host_C"
+#           ipv4: "10.10.2.4"
+#     protocol: tcp
+#     services:
+#       - http
+#       - https
+#     rule:
+#       action: "permit"
+#       #logging_init: false
+#       #logging_close: true
+#       #ips_sensor: "default"

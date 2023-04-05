@@ -167,6 +167,7 @@ asa_fw_rules:
         - name: "pub_host_B"
           type: host
           ipv4: "7.7.7.2"
+    protocol: tcp
     services:
       - http
       - https
@@ -192,6 +193,7 @@ asa_fw_rules:
       addresses:
         - name: "inside_host_C"
           ipv4: "10.10.2.4"
+    protocol: tcp
     services:
       - http
       - https
