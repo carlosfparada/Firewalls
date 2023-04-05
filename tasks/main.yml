@@ -16,3 +16,7 @@
 - include_tasks: ../tasks/fortinet/main.yml
   when: inventory_hostname in groups['fortinet']
   tags: [always]
+
+- include_tasks: ../tasks/asa/main.yml
+  when: inventory_hostname in groups['asa']
+  tags: [always]
