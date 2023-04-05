@@ -1,8 +1,8 @@
 {% for rule in asa_fw_rules %}
-  {% for source in rule.source.addresses %}
+  {% for src in rule.src.addresses %}
     {% for dest in rule.dest.addresses %}
       {% for service in rule.services %}
-access-list {{rule.name}} extended {{rule.rule.action}} {{rule.protocol}} host {{source.ipv4}} host {{dest.ipv4}} eq {{service}}
+access-list {{rule.name}} extended {{rule.rule.action}} {{rule.protocol}} host {{src.ipv4}} host {{dest.ipv4}} eq {{service}}
       {% endfor %}
     {% endfor %}
   {% endfor %}
