@@ -1,0 +1,10 @@
+{% for rule in asa_fw_rules %}
+  {% for source in rule.source.addresses %}
+    {% for dest in rule.dest.addresses %}
+      {% for service in rule.services %}
+access-list {{rule.name}} extended {{rule.rule.action}} {{rule.protocol}} host {{source.ipv4}} host {{dest.ipv4}} eq {{service}}
+      {% endfor %}
+    {% endfor %}
+  {% endfor %}
+access-group {{rule.name}} {{rule.name}} interface {{interface}}
+{% endfor %}

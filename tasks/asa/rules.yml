@@ -27,7 +27,7 @@
 
 - name: Configure access rules
   cisco.asa.asa_config:
-    src: ../../templates/asarules.j2
+    src: ../../templates/asa/rules.j2
   register: result
 - name: Debug
   debug:
