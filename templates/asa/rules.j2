@@ -6,5 +6,5 @@ access-list {{rule.name}} extended {{rule.rule.action}} {{rule.protocol}} host {
       {% endfor %}
     {% endfor %}
   {% endfor %}
-access-group {{rule.name}} {{rule.name}} interface {{rule.interface}}
+access-group {{rule.name}} {{rule.inout}} interface {{rule.interface}}
 {% endfor %}
