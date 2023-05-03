@@ -1,0 +1,12 @@
+---
+
+- name: Firewalls Checkpoint rules
+  hosts: checkpoint
+  connection: httpapi
+  gather_facts: no
+  become: true
+  
+  tasks:
+  - include_vars: ../../defaults/main.yml
+
+  - include_tasks: ../../tasks/checkpoint/rules.yml
