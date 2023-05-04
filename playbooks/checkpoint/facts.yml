@@ -4,7 +4,7 @@
   hosts: checkpoint
   connection: httpapi
   gather_facts: no
-  become: true
+#  become: true
 
   vars:
     ansible_command_timeout: 300
