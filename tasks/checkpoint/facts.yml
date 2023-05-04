@@ -13,6 +13,7 @@
   check_point.mgmt.cp_mgmt_access_rule_facts:
     details_level: full
     #details_level: standard
+    name: "Cleanup rule"
   register: _accessrules
 - name: Debug
   debug:
