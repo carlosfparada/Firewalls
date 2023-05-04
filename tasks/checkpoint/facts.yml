@@ -1,5 +1,14 @@
 ---
 
+- name: Query host objects
+  check_point.mgmt.cp_mgmt_host_facts:
+    #details_level: full
+    details_level: standard
+  register: _hosts
+- name: Debug
+  debug:
+    var: _hosts
+
 - name: Query access rules
   check_point.mgmt.cp_mgmt_access_rule_facts:
     #details_level: full
@@ -9,11 +18,3 @@
   debug:
     var: _accessrules
 
-- name: Query host objects
-  check_point.mgmt.cp_mgmt_host_facts:
-    #details_level: full
-    details_level: standard
-  register: _hosts
-- name: Debug
-  debug:
-    var: _hosts
