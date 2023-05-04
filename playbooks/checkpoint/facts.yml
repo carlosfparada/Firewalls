@@ -4,6 +4,8 @@
   hosts: checkpoint
   connection: httpapi
   gather_facts: no
+  vars:
+    ansible_command_timeout: 300
   
   tasks:
   - include_vars: ../../defaults/main.yml
