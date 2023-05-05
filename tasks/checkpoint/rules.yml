@@ -17,8 +17,11 @@
     auto_publish_session: yes
 
 - name: Create host object
-  debug: 
-    msg: "{{item.1.name}} {{item.1.ipv4}}"
+  check_point.mgmt.cp_mgmt_host:
+    name: "item.1.name"
+    ip_address: "item.1.ipv4"
+    ignore_warnings: true
+    auto_publish_session: yes
   with_subelements:
   - "{{checkpoint_fw_rules}}"
   - src.addresses
