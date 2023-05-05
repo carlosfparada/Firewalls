@@ -1,7 +1,5 @@
 ---
 
----
-
 - name: Firewalls Checkpoint rules
   hosts: checkpoint
   connection: httpapi
