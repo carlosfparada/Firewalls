@@ -1,21 +1,5 @@
 ---
 
-- name: Create host object
-  check_point.mgmt.cp_mgmt_host:
-    name: "src-1.1.1.1"
-    color: red
-    ip_address: "1.1.1.1"
-    ignore_warnings: true
-    auto_publish_session: yes
-
-- name: Create host object
-  check_point.mgmt.cp_mgmt_host:
-    name: "dst-2.2.2.2"
-    color: blue
-    ip_address: "2.2.2.2"
-    ignore_warnings: true
-    auto_publish_session: yes
-
 - name: Create source hosts objects
   debug:
     msg: "{{item.1.name}},{{item.1.ipv4}}"
