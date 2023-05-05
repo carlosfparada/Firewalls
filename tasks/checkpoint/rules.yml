@@ -18,10 +18,11 @@
 
 - name: Create host object
   debug:
-    msg: "{{item.1.name}},{{item.1.ipv4}}"
+    msg: "{{item.1.name}},{{item.1.ipv4}}; {{item.2.name}},{{item.2.ipv4}};"
   with_subelements:
   - "{{checkpoint_fw_rules}}"
   - src.addresses
+  - dest.addresses
 
 - name: Create host object
   check_point.mgmt.cp_mgmt_host:
