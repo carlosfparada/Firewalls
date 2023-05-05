@@ -20,8 +20,6 @@
   - "{{checkpoint_fw_rules}}"
   - dest.addresses
 
-
-
 - name: Create access rule
   check_point.mgmt.cp_mgmt_access_rule:
     layer: "Network"
@@ -29,8 +27,6 @@
     position: 1
     name: "{{item.name}}"
     source: "{{item.src.addresses|map(attribute='name')|list}}"
-    #- "pub_host_A"
-    #- "pub_host_B"
     destination: "{{item.dest.addresses|map(attribute='name')|list}}"
     service: "{{item.services}}"
     action: Drop

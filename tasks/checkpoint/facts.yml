@@ -9,13 +9,23 @@
   debug:
     var: _hosts
 
-- name: Query access rules
+- name: Query default access rule
   check_point.mgmt.cp_mgmt_access_rule_facts:
     #details_level: full
     details_level: standard
     layer: Network
     name: "Cleanup rule"
   register: _accessrules
+  loop: "{{checkpoint_fw_rules}}"
+
+- name: Query access rules
+  check_point.mgmt.cp_mgmt_access_rule_facts:
+    #details_level: full
+    details_level: standard
+    layer: Network
+    name: "{{item.name}}"
+  register: _accessrules
+  loop: "{{checkpoint_fw_rules}}"
 - name: Debug access rules
   debug:
     var: _accessrules
