@@ -1,3 +1,5 @@
+---
+
 - name: Query host objects
   check_point.mgmt.cp_mgmt_host_facts:
     #details_level: full
