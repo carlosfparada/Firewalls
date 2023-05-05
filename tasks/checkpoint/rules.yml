@@ -26,8 +26,8 @@
     state: present
     position: 1
     name: "{{item.name}}"
-    source: "{{item.src.addresses|map(attribute='name')|list}}"
-    destination: "{{item.dest.addresses|map(attribute='name')|list}}"
+    source: "{{item.src.addresses | map(attribute='name') | list}}"
+    destination: "{{item.dest.addresses | map(attribute='name') | list}}"
     service: "{{item.services}}"
     action: "{{item.rule.action}}"
     track:
