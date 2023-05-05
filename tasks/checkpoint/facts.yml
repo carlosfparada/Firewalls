@@ -24,8 +24,8 @@
     details_level: standard
     layer: Network
     name: "{{item.name}}"
-  register: _accessrules
   loop: "{{checkpoint_fw_rules}}"
+  register: _accessrules
 - name: Debug access rules
   debug:
     var: _accessrules
