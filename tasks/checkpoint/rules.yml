@@ -25,9 +25,9 @@
 
 - name: Create host object
   check_point.mgmt.cp_mgmt_host:
-    name: "item.1.name"
+    name: "{{item.1.name}}"
     color: blue
-    ip_address: "item.1.ipv4"
+    ip_address: "{{item.1.ipv4}}"
     ignore_warnings: true
     auto_publish_session: yes
   with_subelements:
