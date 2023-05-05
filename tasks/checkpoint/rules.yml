@@ -18,7 +18,7 @@
 
 - name: Create host object
   debug: 
-    msg: "{{item.0}} {{item.1}}"
+    msg: "{{item.1.name}} {{item.1.ipv4}}"
   with_subelements:
   - "{{checkpoint_fw_rules}}"
   - src.addresses
