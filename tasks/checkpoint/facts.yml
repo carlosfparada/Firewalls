@@ -5,9 +5,6 @@
     #details_level: full
     details_level: standard
   register: _hosts
-- name: Debug hosts
-  debug:
-    var: _hosts
 
 - name: Query default access rule
   check_point.mgmt.cp_mgmt_access_rule_facts:
@@ -25,7 +22,4 @@
     name: "{{item.name}}"
   loop: "{{checkpoint_fw_rules}}"
   register: _accessrules
-- name: Debug access rules
-  debug:
-    var: _accessrules
 
