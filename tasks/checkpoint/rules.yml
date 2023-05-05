@@ -28,11 +28,10 @@
     state: present
     position: 1
     name: "{{item.name}}"
-    source:
-    - "pub_host_A"
-    - "pub_host_B"
-    #"{{item.src.addresses[0]}}"
-    destination: "{{item.dest.addresses[0].name}}"
+    source: "{{item.src.addresses|map(attribute='name')|list}}"
+    #- "pub_host_A"
+    #- "pub_host_B"
+    destination: "{{item.dest.addresses.name|map(attribute='name')|list}}"
     service: "{{item.services}}"
     action: Drop
     track:
