@@ -1,48 +1,31 @@
 ---
 
-- name: Create attacker host object if it does not exist
+- name: Create host object
   check_point.mgmt.cp_mgmt_host:
-    name: "attacker-{{ attacker_src_ip}}"
+    name: "src-1.1.1.1"
     color: red
-    ip_address: "{{ attacker_src_ip }}"
+    ip_address: "1.1.1.1"
     ignore_warnings: true
-  when: attacker_src_ip is defined
-  notify: Publish and install handler
+    auto_publish_session: yes
 
-- name: Create target host object is it does not exist
+- name: Create host object
   check_point.mgmt.cp_mgmt_host:
-    name: "target-{{ target_dst_ip }}"
+    name: "dst-2.2.2.2"
     color: blue
-    ip_address: "{{ target_dst_ip }}"
+    ip_address: "2.2.2.2"
     ignore_warnings: true
-  when: target_dst_ip is defined
-  notify: Publish and install handler
+    auto_publish_session: yes
 
-- name: Create access rule to quarantine and deny access from attacker to target
+- name: Create access rule to deny access from host
   check_point.mgmt.cp_mgmt_access_rule:
-    layer: "{{ policy_name }} Network"
+#    layer: "Policy 1 Network"
+    state: present
     position: 1
-    name: "Quarantine attacker and prevent reconnaissance attack from {{ attacker_src_ip}} to {{ target_dst_ip }}"
-    source: "attacker-{{ attacker_src_ip}}"
-    destination: "target-{{ target_dst_ip }}"
+    name: "Deny traffic from from 1.1.1.1 to 2.2.2.2"
+    source: "src-1.1.1.1"
+    destination: "dst-2.2.2.2"
+#    service: "{{item.service}}"
     action: Drop
     track:
       type: log
-  notify: Publish and install handler
-  when:  attacker_src_ip is defined and target_dst_ip is defined
-
-# Add access policy rules in Check Point management server
-- name: add-access-rule or delete-access-rule tasks
-  check_point.mgmt.cp_mgmt_access_rule:
-    state: "{{item.state}}"
-    layer: "{{item.layer}}"
-    name: "{{item.name}}"
-    position: "{{item.position}}"
-    source: "{{item.source}}"
-    destination: "{{item.destination}}"
-    service: "{{item.service}}"
-    action: "{{item.action}}"
-    track:
-      type: "{{item.track_type}}"
-  loop: "{{cp_mgmt_access_rule_vars}}"
-  notify: Publish and install handler
+    auto_publish_session: yes
