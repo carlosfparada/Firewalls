@@ -24,10 +24,10 @@
 
 - name: Create network objects
   check_point.mgmt.cp_mgmt_network:
-    name: "network-{{item.1.ipv4 + '/24' | ipaddr('network')}}"
+    name: "network-{{item.1.ipv4 + '\/24' | ipaddr('network')}}"
     state: present
-    subnet: "{{item.1.ipv4 + '/24' | ipaddr('network')}}"
-    subnet_mask: "{{item.1.ipv4 + '/24' | ipaddr('netmask')}}"
+    subnet: "{{item.1.ipv4 | ipaddr('0') | ipaddr('network')}}"
+    subnet_mask: "{{item.1.ipv4 | ipaddr('0') | ipaddr('netmask')}}"
     ignore_warnings: true
     auto_publish_session: yes
   with_subelements:
