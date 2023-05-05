@@ -5,7 +5,7 @@
     #details_level: full
     details_level: standard
   register: _hosts
-- name: Debug
+- name: Debug hosts
   debug:
     var: _hosts
 
@@ -18,7 +18,7 @@
     - "Cleanup rule"
     - "test"
   register: _accessrules
-- name: Debug
+- name: Debug access rules
   debug:
     var: _accessrules
 
