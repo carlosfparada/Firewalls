@@ -14,9 +14,7 @@
     #details_level: full
     details_level: standard
     layer: Network
-    name:
-    - "Cleanup rule"
-    - "test"
+    name: "Cleanup rule"
   register: _accessrules
 - name: Debug access rules
   debug:
