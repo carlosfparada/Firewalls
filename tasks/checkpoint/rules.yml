@@ -31,7 +31,7 @@
     source: "{{item.src.addresses|map(attribute='name')|list}}"
     #- "pub_host_A"
     #- "pub_host_B"
-    destination: "{{item.dest.addresses.name|map(attribute='name')|list}}"
+    destination: "{{item.dest.addresses|map(attribute='name')|list}}"
     service: "{{item.services}}"
     action: Drop
     track:
