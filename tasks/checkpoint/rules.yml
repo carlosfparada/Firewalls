@@ -3,6 +3,7 @@
 - name: Create source hosts objects
   check_point.mgmt.cp_mgmt_host:
     name: "{{item.1.name}}"
+    state: present
     ip_address: "{{item.1.ipv4}}"
     ignore_warnings: true
     auto_publish_session: yes
@@ -13,7 +14,20 @@
 - name: Create destination hosts objects
   check_point.mgmt.cp_mgmt_host:
     name: "{{item.1.name}}"
+    state: present
     ip_address: "{{item.1.ipv4}}"
+    ignore_warnings: true
+    auto_publish_session: yes
+  with_subelements:
+  - "{{checkpoint_fw_rules}}"
+  - dest.addresses
+
+- name: Create network objects
+  check_point.mgmt.cp_mgmt_network:
+    name: "{{item.1.name}}"
+    state: present
+    subnet: "{{item.1.ipv4 | ipaddr('network')}}"
+    subnet_mask: "{{item.1.ipv4 | ipaddr('netmask')}}"
     ignore_warnings: true
     auto_publish_session: yes
   with_subelements:
