@@ -16,16 +16,26 @@
     ignore_warnings: true
     auto_publish_session: yes
 
-- name: Create access rule to deny access from host
-  check_point.mgmt.cp_mgmt_access_rule:
-    layer: "Network"
-    state: present
-    position: 1
-    name: "Deny traffic from 1.1.1.1 to 2.2.2.2"
-    source: "src-1.1.1.1"
-    destination: "dst-2.2.2.2"
-#    service: "{{item.service}}"
-    action: Drop
-    track:
-      type: log
-    auto_publish_session: yes
+- name: Create host object
+  debug: 
+    msg: "{{item.0}} {{item.1}}"
+  with_subelements:
+  - "{{checkpoint_fw_rules}}"
+  - src.addresses
+
+
+
+# - name: Create access rule to deny access from host
+#   check_point.mgmt.cp_mgmt_access_rule:
+#     layer: "Network"
+#     state: present
+#     position: 1
+#     name: "Deny traffic from 1.1.1.1 to 2.2.2.2"
+#     source: "src-1.1.1.1"
+#     destination: "dst-2.2.2.2"
+# #    service: "{{item.service}}"
+#     action: Drop
+#     track:
+#       type: log
+#     auto_publish_session: yes
+
