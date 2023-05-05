@@ -18,7 +18,7 @@
 
 - name: Create access rule to deny access from host
   check_point.mgmt.cp_mgmt_access_rule:
-#    layer: "Policy 1 Network"
+    layer: "Network"
     state: present
     position: 1
     name: "Deny traffic from from 1.1.1.1 to 2.2.2.2"
