@@ -16,7 +16,6 @@
     layer: Network
     name: "Cleanup rule"
   register: _accessrules
-  loop: "{{checkpoint_fw_rules}}"
 
 - name: Query access rules
   check_point.mgmt.cp_mgmt_access_rule_facts:
