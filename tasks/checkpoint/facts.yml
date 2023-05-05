@@ -13,7 +13,7 @@
   check_point.mgmt.cp_mgmt_access_rule_facts:
     #details_level: full
     details_level: standard
-    layer: Network
+    layer: "{{layer}}"
     name: "Cleanup rule"
   register: _accessrules
 
@@ -21,7 +21,7 @@
   check_point.mgmt.cp_mgmt_access_rule_facts:
     #details_level: full
     details_level: standard
-    layer: Network
+    layer: "{{layer}}"
     name: "{{item.name}}"
   loop: "{{checkpoint_fw_rules}}"
   register: _accessrules

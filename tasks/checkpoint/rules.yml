@@ -22,14 +22,14 @@
 
 - name: Create access rule
   check_point.mgmt.cp_mgmt_access_rule:
-    layer: "Network"
+    layer: "{{layer}}"
     state: present
     position: 1
     name: "{{item.name}}"
     source: "{{item.src.addresses|map(attribute='name')|list}}"
     destination: "{{item.dest.addresses|map(attribute='name')|list}}"
     service: "{{item.services}}"
-    action: Drop
+    action: "{{item.rule.action}}"
     track:
       type: log
     auto_publish_session: yes

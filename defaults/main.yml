@@ -205,17 +205,14 @@ asa_fw_rules:
 
 
 # checkpoint
+layer: Network
 checkpoint_fw_rules:
   - name: rule_C
-    interface: "outside"
-    inout: in
     src:
-      interface: "outside"
       addresses:
         - name: "inside_host_D"
           ipv4: "10.10.2.3"
     dest:
-      interface: "inside"
       addresses:
         - name: "pub_host_A"
           type: host
@@ -223,17 +220,14 @@ checkpoint_fw_rules:
         - name: "pub_host_B"
           type: host
           ipv4: "7.7.7.2"
-    protocol: tcp
     services:
       - http
       - https
     rule:
-      action: "permit"
+      action: "Accept"
   - name: rule_D
-    interface: "outside"
     inout: in
     src:
-      interface: "outside"
       addresses:
         - name: "pub_host_E"
           type: host
@@ -246,12 +240,8 @@ checkpoint_fw_rules:
       addresses:
         - name: "inside_host_C"
           ipv4: "10.10.2.4"
-    protocol: tcp
     services:
       - http
       - https
     rule:
-      action: "permit"
-      #logging_init: false
-      #logging_close: true
-      #ips_sensor: "default"
+      action: "Accept"
