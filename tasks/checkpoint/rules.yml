@@ -21,7 +21,7 @@
     layer: "Network"
     state: present
     position: 1
-    name: "Deny traffic from from 1.1.1.1 to 2.2.2.2"
+    name: "Deny traffic from 1.1.1.1 to 2.2.2.2"
     source: "src-1.1.1.1"
     destination: "dst-2.2.2.2"
 #    service: "{{item.service}}"
