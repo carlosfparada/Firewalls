@@ -1,20 +1,6 @@
 ---
 
 - name: Create source hosts objects
-  debug:
-    msg: "{{item.1.name}},{{item.1.ipv4}}"
-  with_subelements:
-  - "{{checkpoint_fw_rules}}"
-  - src.addresses
-
-- name: Create destination hosts objects
-  debug:
-    msg: "{{item.1.name}},{{item.1.ipv4}}"
-  with_subelements:
-  - "{{checkpoint_fw_rules}}"
-  - dest.addresses
-
-- name: Create host object
   check_point.mgmt.cp_mgmt_host:
     name: "{{item.1.name}}"
     ip_address: "{{item.1.ipv4}}"
@@ -24,17 +10,27 @@
   - "{{checkpoint_fw_rules}}"
   - src.addresses
 
+- name: Create destination hosts objects
+  check_point.mgmt.cp_mgmt_host:
+    name: "{{item.1.name}}"
+    ip_address: "{{item.1.ipv4}}"
+    ignore_warnings: true
+    auto_publish_session: yes
+  with_subelements:
+  - "{{checkpoint_fw_rules}}"
+  - dest.addresses
 
 
-- name: Create access rule to deny access from host
+
+- name: Create access rule
   check_point.mgmt.cp_mgmt_access_rule:
     layer: "Network"
     state: present
-    #position: 1
-    name: "item.name"
-    source: "src-1.1.1.1"
-    destination: "dst-2.2.2.2"
-    service: "http"
+    position: 1
+    name: "{{item.name}}"
+    source: "{{item.src.addresses[0].name}}"
+    destination: "{{item.dest.addresses[0].name}}"
+    service: "{{item.services}}"
     action: Drop
     track:
       type: log
