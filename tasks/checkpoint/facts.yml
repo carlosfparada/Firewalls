@@ -6,12 +6,6 @@
     #details_level: standard
   register: _hosts
 
-- name: Query network objects
-  check_point.mgmt.cp_mgmt_network_facts:
-    details_level: full
-    #details_level: standard
-  register: _networks
-
 - name: Query access layer info
   cp_mgmt_access_layer_facts:
     details_level: full
@@ -33,4 +27,10 @@
 #     name: "{{item.name}}"
 #   loop: "{{checkpoint_fw_rules}}"
 #   register: _accessrules
+
+# - name: Query network objects
+#   check_point.mgmt.cp_mgmt_network_facts:
+#     details_level: full
+#     #details_level: standard
+#   register: _networks
 
