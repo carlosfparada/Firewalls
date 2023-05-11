@@ -11,17 +11,25 @@
     details_level: full
     #details_level: standard
     layer: "{{layer}}"
-    name: "Cleanup rule"
+    filter: "Cleanup rule"
   register: _accessrules
 
-- name: Query access rules
-  check_point.mgmt.cp_mgmt_access_rule_facts:
-    details_level: full
-    #details_level: standard
-    layer: "{{layer}}"
-    name: "{{item.name}}"
-  loop: "{{checkpoint_fw_rules}}"
-  register: _accessrules
+# - name: Query default access rule
+#   check_point.mgmt.cp_mgmt_access_rule_facts:
+#     details_level: full
+#     #details_level: standard
+#     layer: "{{layer}}"
+#     name: "Cleanup rule"
+#   register: _accessrules
+
+# - name: Query access rules
+#   check_point.mgmt.cp_mgmt_access_rule_facts:
+#     details_level: full
+#     #details_level: standard
+#     layer: "{{layer}}"
+#     name: "{{item.name}}"
+#   loop: "{{checkpoint_fw_rules}}"
+#   register: _accessrules
 
 # - name: Query network objects
 #   check_point.mgmt.cp_mgmt_network_facts:
