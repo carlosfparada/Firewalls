@@ -11,7 +11,7 @@
     details_level: full
     #details_level: standard
     layer: "{{layer}}"
-    filter: "Cleanup rule"
+    filter: "rule"
   register: _accessrules
 
 # - name: Query default access rule
