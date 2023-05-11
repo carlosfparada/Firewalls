@@ -1,13 +1,10 @@
 ---
 
-- name: show-access-roles
-  check_point.mgmt.cp_mgmt_access_role_facts:
-    details_level: full
-
 - name: Query host objects
   check_point.mgmt.cp_mgmt_host_facts:
     details_level: full
     #details_level: standard
+  ignore_errors: yes
   register: _hosts
 
 - name: Query default access rule
@@ -16,6 +13,7 @@
     #details_level: standard
     layer: "{{layer}}"
     name: "Cleanup rule"
+  ignore_errors: yes
   register: _accessrules
 
 - name: Query access rules
@@ -25,6 +23,7 @@
     layer: "{{layer}}"
     name: "{{item.name}}"
   loop: "{{checkpoint_fw_rules}}"
+  ignore_errors: yes
   register: _accessrules
 
 # - name: Query network objects
