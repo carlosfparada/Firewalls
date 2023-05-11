@@ -1,6 +1,13 @@
 ---
 
 - name: Query host objects
+  check_point.mgmt.cp_mgmt_package_facts:
+    details_level: full
+    #details_level: standard
+  ignore_errors: yes
+  register: _hosts
+
+- name: Query host objects
   check_point.mgmt.cp_mgmt_host_facts:
     details_level: full
     #details_level: standard
