@@ -22,30 +22,6 @@
   - "{{checkpoint_fw_rules}}"
   - dest.addresses
 
-- name: Create network objects
-  check_point.mgmt.cp_mgmt_network:
-    name: "network-{{item.1.ipv4 | ipaddr('network')}}"
-    state: present
-    subnet: "{{item.1.ipv4 | ipaddr('network')}}"
-    subnet_mask: "{{item.1.ipv4 | ipaddr('netmask')}}"
-    ignore_warnings: true
-    auto_publish_session: yes
-  with_subelements:
-  - "{{checkpoint_fw_rules}}"
-  - src.addresses
-
-- name: Create network objects
-  check_point.mgmt.cp_mgmt_network:
-    name: "network-{{item.1.ipv4 | ipaddr('network')}}"
-    state: present
-    subnet: "{{item.1.ipv4 | ipaddr('network')}}"
-    subnet_mask: "{{item.1.ipv4 | ipaddr('netmask')}}"
-    ignore_warnings: true
-    auto_publish_session: yes
-  with_subelements:
-  - "{{checkpoint_fw_rules}}"
-  - dest.addresses
-
 - name: Create access rule
   check_point.mgmt.cp_mgmt_access_rule:
     layer: "{{layer}}"
@@ -60,4 +36,28 @@
       type: log
     auto_publish_session: yes
   loop: "{{checkpoint_fw_rules}}"
+
+# - name: Create network objects
+#   check_point.mgmt.cp_mgmt_network:
+#     name: "network-{{item.1.ipv4 | ipaddr('network')}}"
+#     state: present
+#     subnet: "{{item.1.ipv4 | ipaddr('network')}}"
+#     subnet_mask: "{{item.1.ipv4 | ipaddr('netmask')}}"
+#     ignore_warnings: true
+#     auto_publish_session: yes
+#   with_subelements:
+#   - "{{checkpoint_fw_rules}}"
+#   - src.addresses
+
+# - name: Create network objects
+#   check_point.mgmt.cp_mgmt_network:
+#     name: "network-{{item.1.ipv4 | ipaddr('network')}}"
+#     state: present
+#     subnet: "{{item.1.ipv4 | ipaddr('network')}}"
+#     subnet_mask: "{{item.1.ipv4 | ipaddr('netmask')}}"
+#     ignore_warnings: true
+#     auto_publish_session: yes
+#   with_subelements:
+#   - "{{checkpoint_fw_rules}}"
+#   - dest.addresses
 
