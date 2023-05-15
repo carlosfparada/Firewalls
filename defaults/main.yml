@@ -245,7 +245,7 @@ checkpoint_fw_rules:
       - https
     rule:
       action: "Accept"
-  - name: rule_D
+  - name: rule_E
     inout: in
     src:
       addresses:
