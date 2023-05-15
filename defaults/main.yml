@@ -245,3 +245,22 @@ checkpoint_fw_rules:
       - https
     rule:
       action: "Accept"
+  - name: rule_D
+    inout: in
+    src:
+      addresses:
+        - name: "pub_host_E"
+          type: host
+          ipv4: "7.7.7.3"
+        - name: "pub_host_F"
+          type: host
+          ipv4: "7.7.7.4"
+    dest:
+      interface: "inside"
+      addresses:
+        - name: "inside_host_C"
+          ipv4: "10.10.2.4"
+    services:
+      - smtp
+    rule:
+      action: "Accept"
