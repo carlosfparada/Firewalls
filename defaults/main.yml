@@ -33,7 +33,7 @@ fw_rules:
     services:
       - http
       - https
-      - snmp
+      - smtp
     rule:
       action: "permit"
       logging_init: false
