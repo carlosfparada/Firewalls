@@ -7,8 +7,10 @@
       - "all" # all, system, session, interfaces, ha, routing, vr, vsys and config
   register: _panos_facts
 
-- debug:
+- name: Debug all
+  debug:
     var: _panos_facts
 
-- debug:
+- name: Debug configs
+  debug:
     msg: "{{ _panos_facts.ansible_facts.ansible_net_config | ansible.utils.from_xml }}"
