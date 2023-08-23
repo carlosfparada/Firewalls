@@ -12,7 +12,7 @@
     details_level: full
     #details_level: standard
     layer: "{{layer}}"
-    name: "*"
+    filter: "*"
   ignore_errors: yes
   register: _accessrules
 
