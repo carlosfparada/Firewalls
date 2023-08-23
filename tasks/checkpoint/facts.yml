@@ -10,8 +10,7 @@
 - name: Query access rules
   check_point.mgmt.cp_mgmt_access_rule_facts:
     details_level: full
-    #details_level: standard
-    layer: "{{layer}}"
+    #layer: "{{layer}}"
   ignore_errors: yes
   register: _accessrules
 
