@@ -37,7 +37,7 @@
         - 'git add .'
         - 'git commit -m "commit today3"'
         - "git push -u origin today3"
-        - "rm -rf /tmp/asa"
+        # - "rm -rf /tmp/asa"
         - 'exit'
       'Username':
         - 'carlosfparada'
