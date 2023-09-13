@@ -7,7 +7,7 @@
 
 - name: Set branch name
   set_fact:
-    branch_name: "{{ "branch_" + now() }}" 
+    branch_name: "{{ "branch_" + }} {% now() %}" 
 
 # git config --global user.email cparada@redhat.com
 # git config --global user.name "Carlos Parada"
