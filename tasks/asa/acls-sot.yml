@@ -22,8 +22,6 @@
   ansible.builtin.expect:
     command: "ssh -o StrictHostKeyChecking=no root@172.16.1.45"
     responses:
-      # 'Are you sure you want to continue connecting (yes/no/[fingerprint])': "yes"
-      # 'You are forced to change your password. Please input a new password.'
       's password:':
         - "Rfc1918!"
       '# ':
@@ -34,11 +32,11 @@
         - 'git clone https://github.com/carlosfparada/ASA-SoT.git'
         - 'cd ASA-SoT'
         - 'echo aa >> access-policies.yml'
-        - "git branch {{ branch_name }}"
-        - "git checkout {{ branch_name }}"
+        - "git branch \"{{ branch_name }}\""
+        - "git checkout \"{{ branch_name }}\""
         - 'git add .'
         - "git commit -m \"commit {{ branch_name }}\""
-        - "git push -u origin {{ branch_name }}"
+        - "git push -u origin \"{{ branch_name }}\"
         - "rm -rf /tmp/asa"
         - 'exit'
       'Username':
