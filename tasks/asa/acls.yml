@@ -7,4 +7,4 @@
 
 - name: Debug 
   debug:
-    var: gather | to_yaml
+    var: gather | to_nice_yaml
