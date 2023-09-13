@@ -11,3 +11,11 @@
 - name: Debug
   debug:
     var: _asa_facts
+
+# New
+
+- name: Gather facts from Cisco ASA (command)
+  cisco.asa.asa_command:
+    commands:
+      - show
+  register: _asa_facts
