@@ -3,20 +3,20 @@
 - name: Gather Access Rules facts
   cisco.asa.asa_acls:
     state: gathered
-  register: gather
+  register: gather.gathered
 
 - name: Debug 
   debug:
-    var: gather | to_nice_yaml
+    var: gather.gathered | to_nice_yaml
 
 - name: Git checkout
   ansible.builtin.git:
     repo: 'https://github.com/carlosfparada/ASA-SoT.git'
-    dest: /tmp/asa-sot
+    dest: /tmp/asa/
 
 - name: Git checkout
   set_fact:
-    asa_sot: "{{ lookup('file', '/tmp/asa-sot/access-policies.yml') }}"
+    asa_sot: "{{ lookup('file', '/tmp/asa/ASA-SoT/access-policies.yml') }}"
 
 - name: Debug ASA SoT content file
   debug:
