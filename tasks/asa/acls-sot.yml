@@ -1,5 +1,19 @@
 ---
 
+- name: Gather Access Rules facts
+  cisco.asa.asa_acls:
+    state: gathered
+  register: gather
+
+- name: Debug 
+  debug:
+    var: gather | to_nice_yaml
+
+- name: Create file with ASA SoT content
+  ansible.builtin.copy:
+    content: "{{ gather | to_nice_yaml }}"
+    dest: "/tmp/asa/access-policies.yml"
+
 - name: Set branch name
   set_fact:
     branch_name: "{{ branch_name | default('branch') }}"
@@ -21,7 +35,7 @@
         - 'git config --global user.name "Carlos Parada"'
         - 'git clone https://github.com/carlosfparada/ASA-SoT.git'
         - 'cd ASA-SoT'
-        - 'echo aa >> access-policies.yml'
+        - 'cp -f ../access-policies.yml .'
         - "git branch \"{{ branch_name }}\""
         - "git checkout \"{{ branch_name }}\""
         - 'git add .'
