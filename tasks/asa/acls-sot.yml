@@ -7,18 +7,7 @@
 
 - name: Set branch name
   set_fact:
-    branch_name: "branch_" + {% now() %}" 
-
-# git config --global user.email cparada@redhat.com
-# git config --global user.name "Carlos Parada"
-# git clone https://github.com/carlosfparada/ASA-SoT.git
-# git branch today
-# git checkout today
-# git add .
-# git commit -m "commit today"
-# git push -u origin today
-# Username: carlosfparada
-# Password: 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
+    branch_name: "{{ branch_ + now() }}" 
 
 - name: Create a repo branch
   ansible.builtin.expect:
