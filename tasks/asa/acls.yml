@@ -20,3 +20,10 @@
     repo: 'https://github.com/carlosfparada/ASA-SoT.git'
     dest: /tmp/asa-sot
 
+- name: Git checkout
+  set_fact:
+    asa_sot: "{{ lookup('file', '/tmp/asa-sot/ASA-SoT/access-policies.yml') }}"
+
+- name: Debug ASA SoT content file
+  debug:
+    var: asa_sot
