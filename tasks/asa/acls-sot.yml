@@ -1,22 +1,12 @@
 ---
 
 - name: Set branch name
-  debug:
-    var: now()
-  delegate_to: localhost
-
-- name: Set branch name
   set_fact:
-    branch_name: "{{ now() }}"
+    branch_name: "{{ branch_name | default('branch') }}"
 
 - name: Set branch name
   debug:
     var: branch_name
-  delegate_to: localhost
-
-# - name: Set branch name
-#   set_fact:
-#     branch_name: "branch_" + "{% now() %}" 
 
 - name: Create a repo branch
   ansible.builtin.expect:
