@@ -22,20 +22,47 @@
   debug:
     var: branch_name
 
-- name: Push file content
-  ansible.builtin.expect:
-    command: "scp -o StrictHostKeyChecking=no /tmp/access-policies.yml root@172.16.1.45:/tmp/access-policies.yml"
-    responses:
-      's password:':
-        - "Rfc1918!"
-      'overwrite': 
-        - y
-      '# ':
-        - "exit"
+# - name: Push file content
+#   ansible.builtin.expect:
+#     command: "scp -o StrictHostKeyChecking=no /tmp/access-policies.yml root@172.16.1.45:/tmp/access-policies.yml"
+#     responses:
+#       's password:':
+#         - "Rfc1918!"
+#       'overwrite': 
+#         - y
+#       '# ':
+#         - "exit"
+
+# - name: Create a repo branch
+#   ansible.builtin.expect:
+#     command: "ssh -o StrictHostKeyChecking=no root@172.16.1.45"
+#     responses:
+#       's password:':
+#         - "Rfc1918!"
+#       '# ':
+#         - "mkdir /tmp/asa"
+#         - "cd /tmp/asa"
+#         - 'git config --global user.email cparada@redhat.com'
+#         - 'git config --global user.name "Carlos Parada"'
+#         - 'git clone https://github.com/carlosfparada/ASA-SoT.git'
+#         - 'cd ASA-SoT'
+#         - 'cp -f /tmp/access-policies.yml access-policies.yml'
+#         - "git branch \"{{ branch_name }}\""
+#         - "git checkout \"{{ branch_name }}\""
+#         - 'git add .'
+#         - "git commit -m \"commit {{ branch_name }}\""
+#         - "git push -u origin \"{{ branch_name }}\""
+#         - "rm -rf /tmp/asa"
+#         - 'exit'
+#       'Username':
+#         - 'carlosfparada'
+#       'Password':
+#         - "{{ authentication_token }}"
+#   no_log: false # hide passwords on logs
 
 - name: Create a repo branch
   ansible.builtin.expect:
-    command: "ssh -o StrictHostKeyChecking=no root@172.16.1.45"
+    command: "ssh -o StrictHostKeyChecking=no root@127.0.0.1"
     responses:
       's password:':
         - "Rfc1918!"
@@ -46,7 +73,7 @@
         - 'git config --global user.name "Carlos Parada"'
         - 'git clone https://github.com/carlosfparada/ASA-SoT.git'
         - 'cd ASA-SoT'
-        - 'cp -f /tmp/access-policies.yml access-policies.yml'
+        #- 'cp -f /tmp/access-policies.yml access-policies.yml'
         - "git branch \"{{ branch_name }}\""
         - "git checkout \"{{ branch_name }}\""
         - 'git add .'
