@@ -23,10 +23,12 @@
       # 'You are forced to change your password. Please input a new password.'
       's password:':
       '# ':
-        - "cd /tmp"
+        - "cd /tmp/asa"
         - 'git config --global user.email cparada@redhat.com
         - 'git config --global user.name "Carlos Parada"
         - git clone https://github.com/carlosfparada/ASA-SoT.git
+        - cd /tmp/asa/ASA-SoT 
+        - echo aa >> access-policies.yml
         - git branch today2
         - git checkout today2
         - git add .
