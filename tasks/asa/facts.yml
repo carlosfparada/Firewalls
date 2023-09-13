@@ -3,7 +3,7 @@
 - name: Gather facts from Cisco ASA
   cisco.asa.asa_facts:
     gather_network_resources: config
-    #gather_subset: config
+    gather_subset: acls
   register: _asa_facts
 
 - name: Debug
