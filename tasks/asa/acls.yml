@@ -1,0 +1,9 @@
+---
+
+- name: Gather facts
+  cisco.asa.asa_acls:
+    state: gathered
+  register: gather
+
+- name: Debug 
+    var: gather
