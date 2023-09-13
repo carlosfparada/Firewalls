@@ -39,8 +39,8 @@
         - "git push -u origin today3"
         - "rm -rf /tmp/asa"
         - 'exit'
-      'Username:':
+      'Username':
         - 'carlosfparada'
-      'Password:':
+      'Password':
         - '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'
   no_log: false # hide passwords on logs
