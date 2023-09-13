@@ -32,11 +32,11 @@
         - 'git clone https://github.com/carlosfparada/ASA-SoT.git'
         - 'cd ASA-SoT'
         - 'echo aa >> access-policies.yml'
-        - "git branch today4"
-        - "git checkout today4"
+        - "git branch {{ branch_name }}"
+        - "git checkout {{ branch_name }}"
         - 'git add .'
-        - 'git commit -m "commit today4"'
-        - "git push -u origin today4"
+        - "git commit -m \"commit {{ branch_name }}\""
+        - "git push -u origin {{ branch_name }}"
         - "rm -rf /tmp/asa"
         - 'exit'
       'Username':
