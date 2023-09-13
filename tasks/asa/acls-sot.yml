@@ -36,7 +36,7 @@
         - "git checkout \"{{ branch_name }}\""
         - 'git add .'
         - "git commit -m \"commit {{ branch_name }}\""
-        - "git push -u origin \"{{ branch_name }}\"
+        - "git push -u origin \"{{ branch_name }}\""
         - "rm -rf /tmp/asa"
         - 'exit'
       'Username':
