@@ -12,5 +12,6 @@
 - name: Manage Access Rules config
   cisco.asa.asa_acls:
     state: overridden
-    config: "{{ asa_fw_rules }}"
+    config: 
+      acls: "{{ asa_fw_rules }}"
 
