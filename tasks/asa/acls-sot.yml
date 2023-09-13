@@ -28,6 +28,8 @@
     responses:
       's password:':
         - "Rfc1918!"
+      'overwrite': 
+        - y
       '# ':
         - "exit"
 
