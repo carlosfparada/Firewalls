@@ -1,9 +1,14 @@
 ---
 
+- name: ansible facts
+  ansible.builtin.debug:
+    var: ansible_facts
+  delegate_to: ansible_facts
+
 - name: Debug timestamp
   debug:
     var: ansible_date_time
-  delegate_to: localhost
+  delegate_to: "localhost"
 
 # git config --global user.email cparada@redhat.com
 # git config --global user.name "Carlos Parada"
