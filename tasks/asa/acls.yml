@@ -17,6 +17,6 @@
 
 - name: Git checkout
   ansible.builtin.git:
-    repo: 'https://github.com/carlosfparada/Firewalls/blob/main/defaults/main.yml'
+    repo: 'https://github.com/carlosfparada/Firewalls.git'
     dest: /tmp/
 
