@@ -1,8 +1,8 @@
 ---
 
-- name: Debug timestamp
-  debug:
-    var: ansible_date_time
+- name: Set branch name
+  set_fact:
+    branch_name: "{{ "branch_" + now() }}" 
   delegate_to: localhost
 
 # git config --global user.email cparada@redhat.com
