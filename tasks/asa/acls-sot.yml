@@ -32,15 +32,15 @@
         - 'git clone https://github.com/carlosfparada/ASA-SoT.git'
         - 'cd ASA-SoT'
         - 'echo aa >> access-policies.yml'
-        - "git branch today3"
-        - "git checkout today3"
+        - "git branch today4"
+        - "git checkout today4"
         - 'git add .'
-        - 'git commit -m "commit today3"'
-        - "git push -u origin today3"
+        - 'git commit -m "commit today4"'
+        - "git push -u origin today4"
         # - "rm -rf /tmp/asa"
         - 'exit'
       'Username':
         - 'carlosfparada'
       'Password':
-        - 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
+        - {{ authentication_token }}
   no_log: false # hide passwords on logs
