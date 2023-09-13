@@ -22,6 +22,15 @@
   debug:
     var: branch_name
 
+- name: Push file content
+  ansible.builtin.expect:
+    command: "scp -o StrictHostKeyChecking=no /tmp/access-policies.yml root@172.16.1.45:/tmp/access-policies.yml"
+    responses:
+      's password:':
+        - "Rfc1918!"
+      '# ':
+        - "exit"
+
 - name: Create a repo branch
   ansible.builtin.expect:
     command: "ssh -o StrictHostKeyChecking=no root@172.16.1.45"
