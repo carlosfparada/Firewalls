@@ -1,9 +1,13 @@
 ---
 
 - name: Set branch name
+  debug:
+    var: now()
+  delegate_to: localhost
+
+- name: Set branch name
   set_fact:
     branch_name: "{{ "branch_" + now() }}" 
-  delegate_to: localhost
 
 # git config --global user.email cparada@redhat.com
 # git config --global user.name "Carlos Parada"
