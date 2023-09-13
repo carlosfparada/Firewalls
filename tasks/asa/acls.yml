@@ -10,7 +10,7 @@
     var: gather | to_nice_yaml
 
 - name: Manage Access Rules config
-  asa_acls:
+  cisco.asa.asa_acls:
     state: overridden
     config: "{{ asa_fw_rules }}"
 
