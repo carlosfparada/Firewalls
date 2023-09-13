@@ -1,6 +1,6 @@
 ---
 
-- name: Firewalls ASA rules
+- name: Firewalls ASA acls
   hosts: asa
   connection: network_cli
   gather_facts: no
