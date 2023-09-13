@@ -1,13 +1,13 @@
 ---
 
-# - name: Gather Access Rules facts
-#   cisco.asa.asa_acls:
-#     state: gathered
-#   register: gather.gathered
+- name: Gather Access Rules facts
+  cisco.asa.asa_acls:
+    state: gathered
+  register: gather.gathered
 
-# - name: Debug 
-#   debug:
-#     var: gather.gathered | to_nice_yaml
+- name: Debug 
+  debug:
+    var: gather.gathered | to_nice_yaml
 
 - name: Git checkout
   ansible.builtin.git:
@@ -24,6 +24,6 @@
 
 - name: Manage Access Rules config
   cisco.asa.asa_acls:
-    state: merged
+    state: overridden
     config: 
       acls: "{{ asa_sot }}"
