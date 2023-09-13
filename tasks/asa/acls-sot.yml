@@ -1,10 +1,5 @@
 ---
 
-- name: ansible facts
-  ansible.builtin.debug:
-    var: ansible_facts
-  delegate_to: localhost
-
 - name: Debug timestamp
   debug:
     var: ansible_date_time
@@ -34,11 +29,11 @@
         - 'git clone https://github.com/carlosfparada/ASA-SoT.git'
         - 'cd /tmp/asa/ASA-SoT'
         - 'echo aa >> access-policies.yml'
-        - "git branch {{ ansible_date_time.iso8601_basic }}"
-        - "git checkout {{ ansible_date_time.iso8601_basic }}"
+        - "git branch today2"
+        - "git checkout today2"
         - 'git add .'
-        - "git commit -m 'commit {{ ansible_date_time.iso8601_basic }}'"
-        - "git push -u origin  {{ ansible_date_time.iso8601_basic }}"
+        - "git commit -m 'commit today2'"
+        - "git push -u origin today2"
         - 'exit'
       'Username:':
         - 'carlosfparada'
