@@ -17,6 +17,6 @@
 
 - name: Git checkout
   ansible.builtin.git:
-    repo: 'https://github.com/carlosfparada/ASA.git'
+    repo: 'https://github.com/carlosfparada/ASA-SoT.git'
     dest: /tmp/
 
