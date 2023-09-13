@@ -20,7 +20,6 @@
 # git push -u origin today
 # Username: carlosfparada
 # Password: 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
-
 - name: Create a repo branch
   ansible.builtin.expect:
     command: "ssh -o StrictHostKeyChecking=no root@{{ 172.16.1.45 }}"
