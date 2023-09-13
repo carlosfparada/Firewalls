@@ -9,6 +9,11 @@
   set_fact:
     branch_name: now() 
 
+- name: Set branch name
+  debug:
+    var: branch_name
+  delegate_to: localhost
+
 # - name: Set branch name
 #   set_fact:
 #     branch_name: "branch_" + "{% now() %}" 
