@@ -16,7 +16,7 @@
 
 - name: Git checkout
   set_fact:
-    asa_sot: "{{ lookup('file', '/tmp/asa/ASA-SoT/access-policies.yml') }}"
+    asa_sot: "{{ lookup('file', '/tmp/asa/access-policies.yml') }}"
 
 - name: Debug ASA SoT content file
   debug:
