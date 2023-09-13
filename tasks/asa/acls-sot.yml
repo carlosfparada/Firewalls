@@ -62,7 +62,7 @@
 
 - name: Create a repo branch
   ansible.builtin.expect:
-    command: "ls"
+    command: "su -"
     responses:
       's password:':
         - "Rfc1918!"
