@@ -3,6 +3,7 @@
 - name: Debug timestamp
   debug:
     var: ansible_date_time
+  delegate_to: hostname
 
 # git config --global user.email cparada@redhat.com
 # git config --global user.name "Carlos Parada"
