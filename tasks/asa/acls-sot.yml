@@ -25,17 +25,19 @@
       's password:':
         - "Rfc1918!"
       '# ':  
+        - "mkdir /tmp/asa"
         - "cd /tmp/asa"
         - 'git config --global user.email cparada@redhat.com'
         - 'git config --global user.name "Carlos Parada"'
         - 'git clone https://github.com/carlosfparada/ASA-SoT.git'
-        - 'cd /tmp/asa/ASA-SoT'
+        - 'cd ASA-SoT'
         - 'echo aa >> access-policies.yml'
         - "git branch today2"
         - "git checkout today2"
         - 'git add .'
         - "git commit -m 'commit today2'"
         - "git push -u origin today2"
+        - "rm -rf /tmp/asa"
         - 'exit'
       'Username:':
         - 'carlosfparada'
