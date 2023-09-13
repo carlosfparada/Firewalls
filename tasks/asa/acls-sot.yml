@@ -46,7 +46,7 @@
 #         - 'git config --global user.name "Carlos Parada"'
 #         - 'git clone https://github.com/carlosfparada/ASA-SoT.git'
 #         - 'cd ASA-SoT'
-#         - 'cp -f /tmp/access-policies.yml access-policies.yml'
+#         - 'mv -f /tmp/access-policies.yml access-policies.yml'
 #         - "git branch \"{{ branch_name }}\""
 #         - "git checkout \"{{ branch_name }}\""
 #         - 'git add .'
@@ -62,7 +62,7 @@
 
 - name: Create a repo branch
   ansible.builtin.expect:
-    command: "ssh -o StrictHostKeyChecking=no root@127.0.0.1"
+    command: "ls"
     responses:
       's password:':
         - "Rfc1918!"
@@ -73,7 +73,7 @@
         - 'git config --global user.name "Carlos Parada"'
         - 'git clone https://github.com/carlosfparada/ASA-SoT.git'
         - 'cd ASA-SoT'
-        #- 'cp -f /tmp/access-policies.yml access-policies.yml'
+        - 'mv -f /tmp/access-policies.yml access-policies.yml'
         - "git branch \"{{ branch_name }}\""
         - "git checkout \"{{ branch_name }}\""
         - 'git add .'
