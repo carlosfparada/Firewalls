@@ -6,4 +6,5 @@
   register: gather
 
 - name: Debug 
+  debug:
     var: gather
