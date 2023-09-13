@@ -24,21 +24,21 @@
       's password:':
       '# ':
         - "cd /tmp/asa"
-        - 'git config --global user.email cparada@redhat.com
-        - 'git config --global user.name "Carlos Parada"
-        - git clone https://github.com/carlosfparada/ASA-SoT.git
-        - cd /tmp/asa/ASA-SoT 
-        - echo aa >> access-policies.yml
-        - git branch today2
-        - git checkout today2
-        - git add .
-        - git commit -m 'commit today2'
-        - git push -u origin today2
-        - exit
+        - 'git config --global user.email cparada@redhat.com'
+        - 'git config --global user.name "Carlos Parada"'
+        - 'git clone https://github.com/carlosfparada/ASA-SoT.git'
+        - 'cd /tmp/asa/ASA-SoT'
+        - 'echo aa >> access-policies.yml'
+        - "git branch {{ ansible_date_time.iso8601_basic }}"
+        - "git checkout {{ ansible_date_time.iso8601_basic }}"
+        - 'git add .'
+        - "git commit -m 'commit {{ ansible_date_time.iso8601_basic }}'"
+        - "git push -u origin  {{ ansible_date_time.iso8601_basic }}"
+        - 'exit'
       'Username:':
-        - carlosfparada
+        - 'carlosfparada'
       'Password:':
-        - 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
+        - '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'
 
   no_log: false # hide passwords on logs
   ignore_errors: true
