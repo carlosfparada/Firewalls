@@ -2,7 +2,7 @@
 
 - name: Gather facts from Cisco ASA
   cisco.asa.asa_facts:
-    gather_network_resources: config
+    gather_network_resources: all
     gather_subset: acls
   register: _asa_facts
 
