@@ -7,11 +7,11 @@
 
 - name: Debug 
   debug:
-    var: gather.acls | to_nice_yaml
+    var: gather.gathered.acls | to_nice_yaml
 
 - name: Create file with ASA SoT content
   ansible.builtin.copy:
-    content: "{{ gather | to_nice_yaml }}"
+    content: "{{ gather.gathered.acls | to_nice_yaml }}"
     dest: "/tmp/access-policies.yml"
 
 - name: Set branch name
