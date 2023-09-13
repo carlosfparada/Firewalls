@@ -1,6 +1,6 @@
 ---
 
-- name: Gather facts
+- name: Gather Access Rules facts
   cisco.asa.asa_acls:
     state: gathered
   register: gather
@@ -8,3 +8,8 @@
 - name: Debug 
   debug:
     var: gather | to_nice_yaml
+
+- name: Manage Access Rules config
+  asa_acls:
+    state: overridden
+    config: "{{ asa_fw_rules }}"
