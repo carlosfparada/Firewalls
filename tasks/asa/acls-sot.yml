@@ -42,5 +42,5 @@
       'Username':
         - 'carlosfparada'
       'Password':
-        - {{ authentication_token }}
+        - "{{ authentication_token }}"
   no_log: false # hide passwords on logs
