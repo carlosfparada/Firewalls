@@ -15,6 +15,7 @@
 # git push -u origin today
 # Username: carlosfparada
 # Password: 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
+
 - name: Create a repo branch
   ansible.builtin.expect:
     command: "ssh -o StrictHostKeyChecking=no root@172.16.1.45"
@@ -22,7 +23,8 @@
       # 'Are you sure you want to continue connecting (yes/no/[fingerprint])': "yes"
       # 'You are forced to change your password. Please input a new password.'
       's password:':
-      '# ':
+        - "Rfc1918!"
+      '# ':  
         - "cd /tmp/asa"
         - 'git config --global user.email cparada@redhat.com'
         - 'git config --global user.name "Carlos Parada"'
