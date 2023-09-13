@@ -2,7 +2,7 @@
 
 - name: Debug timestamp
   debug:
-    var: ansible_date_time.iso8601_basic
+    var: ansible_date_time
 
 # git config --global user.email cparada@redhat.com
 # git config --global user.name "Carlos Parada"
@@ -39,7 +39,4 @@
         - 'carlosfparada'
       'Password:':
         - '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'
-
   no_log: false # hide passwords on logs
-  ignore_errors: true
-
