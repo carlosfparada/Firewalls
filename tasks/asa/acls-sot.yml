@@ -24,7 +24,7 @@
       # 'You are forced to change your password. Please input a new password.'
       's password:':
         - "Rfc1918!"
-      '# ':  
+      '# ':
         - "mkdir /tmp/asa"
         - "cd /tmp/asa"
         - 'git config --global user.email cparada@redhat.com'
