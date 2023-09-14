@@ -1,5 +1,5 @@
 ---
-
+#https://github.com/fortinet-ansible-dev/ansible-galaxy-fortios-collection/issues/186
 - name: Backup a Fortigate FW
   fortinet.fortios.fortios_monitor:
     vdom: "{{ fw_fg_vdom }}"
@@ -8,6 +8,10 @@
     params:
       scope: 'global'
   register: backupinfo
+
+- name: Debug backup content
+  debug:
+    var: backupinfo
 
 - name: Save the backup information to a file
   copy:
