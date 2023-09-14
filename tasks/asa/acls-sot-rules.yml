@@ -26,30 +26,30 @@
   debug:
     var: result
 
-- name: Configure interfaces
-  cisco.asa.asa_config:
-    lines:
-    - "description {{item.description}}"
-    - "nameif {{item.nameif}}"
-    - "security-level {{item.security_level}}"
-    - "ip address {{item.address|ipaddr('address')}} {{item.address|ipaddr('netmask')}}"
-    - "no shutdown"
-    parents: "interface {{item.name}}"
-  loop: "{{interfaces}}"
+# - name: Configure interfaces
+#   cisco.asa.asa_config:
+#     lines:
+#     - "description {{item.description}}"
+#     - "nameif {{item.nameif}}"
+#     - "security-level {{item.security_level}}"
+#     - "ip address {{item.address|ipaddr('address')}} {{item.address|ipaddr('netmask')}}"
+#     - "no shutdown"
+#     parents: "interface {{item.name}}"
+#   loop: "{{interfaces}}"
 
-- name: Configure traffic zones
-  cisco.asa.asa_config:
-    lines:
-    - "zone {{item.name}}"
-  loop: "{{zones}}"
+# - name: Configure traffic zones
+#   cisco.asa.asa_config:
+#     lines:
+#     - "zone {{item.name}}"
+#   loop: "{{zones}}"
   
-- name: Configure traffic zones interfaces
-  cisco.asa.asa_config:
-    lines:
-    - "zone-member {{item.0.name}}"
-    parents: "interface {{item.1}}"
-  with_subelements:
-  - "{{zones}}"
-  - interfaces
+# - name: Configure traffic zones interfaces
+#   cisco.asa.asa_config:
+#     lines:
+#     - "zone-member {{item.0.name}}"
+#     parents: "interface {{item.1}}"
+#   with_subelements:
+#   - "{{zones}}"
+#   - interfaces
 
 
