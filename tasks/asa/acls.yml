@@ -24,6 +24,6 @@
 
 - name: Manage Access Rules config
   cisco.asa.asa_acls:
-    state: overridden <- ficheiro tem que ser lido (include_file?) 
+    state: overridden
     config: 
       acls: "{{ asa_sot }}"
