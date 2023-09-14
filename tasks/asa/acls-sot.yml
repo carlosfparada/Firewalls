@@ -7,11 +7,13 @@
 
 - name: Debug 
   debug:
+    #var: gather.gathered | to_yaml
     var: gather.gathered | to_yaml
 
 - name: Create file with ASA SoT content
   ansible.builtin.copy:
-    content: "{{ gather.gathered | to_yaml }}"
+    #content: "{{ gather.gathered | to_yaml }}"
+    content: "{{ gather.gathered }}"
     dest: "/tmp/access-policies.yml"
 
 - name: Set branch name
