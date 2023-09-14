@@ -217,12 +217,12 @@ checkpoint_fw_rules:
         - name: "pub_host_A"
           type: host
           ipv4: "7.7.7.1"
-        - name: "pub_host_B"
-          type: host
-          ipv4: "7.7.7.2"
+        # - name: "pub_host_B"
+        #   type: host
+        #   ipv4: "7.7.7.2"
     services:
       - http
-      - https
+      #- https
     rule:
       action: "Accept"
   - name: rule_D
