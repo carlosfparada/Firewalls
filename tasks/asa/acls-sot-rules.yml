@@ -1,5 +1,25 @@
 ---
 
+- name: Git ASA SoT checkout
+  ansible.builtin.git:
+    repo: 'https://github.com/carlosfparada/ASA-SoT.git'
+    dest: /tmp/asa/
+
+- name: Set ASA SoT access rules
+  set_fact:
+    asa_sot: "{{ lookup('file','/tmp/asa/access-policies.yml') | from_yaml }}"
+
+- name: Debug ASA SoT access rules
+  debug:
+    var: asa_sot
+
+- name: Manage ASA SoT access rules config
+  cisco.asa.asa_acls:
+    state: merged
+    config: "{{ asa_sot }}"
+
+
+
 - name: Configure interfaces
   cisco.asa.asa_config:
     lines:
@@ -27,22 +47,3 @@
   - interfaces
 
 
-
-
-- name: Git ASA SoT checkout
-  ansible.builtin.git:
-    repo: 'https://github.com/carlosfparada/ASA-SoT.git'
-    dest: /tmp/asa/
-
-- name: Set ASA SoT access rules
-  set_fact:
-    asa_sot: "{{ lookup('file','/tmp/asa/access-policies.yml') | from_yaml }}"
-
-- name: Debug ASA SoT access rules
-  debug:
-    var: asa_sot
-
-- name: Manage ASA SoT access rules config
-  cisco.asa.asa_acls:
-    state: merged
-    config: "{{ asa_sot }}"
