@@ -1,22 +1,22 @@
 ---
 
-- name: Gather Access Rules facts
-  cisco.asa.asa_acls:
-    state: gathered
-  register: gather
+# - name: Gather Access Rules facts
+#   cisco.asa.asa_acls:
+#     state: gathered
+#   register: gather
 
-- name: Debug 
-  debug:
-    var: gather.gathered
+# - name: Debug 
+#   debug:
+#     var: gather.gathered
 
-- name: Set Firewall access rules
-  set_fact:
-    asa_sot: "{{ gather.gathered }}"
+# - name: Set Firewall access rules
+#   set_fact:
+#     asa_sot: "{{ gather.gathered }}"
 
-- name: Manage Access Rules config
-  cisco.asa.asa_acls:
-    state: overridden
-    config: "{{ asa_sot }}"
+# - name: Manage Access Rules config
+#   cisco.asa.asa_acls:
+#     state: overridden
+#     config: "{{ asa_sot }}"
 
 
 
