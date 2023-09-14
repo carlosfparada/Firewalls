@@ -30,3 +30,8 @@
   cisco.asa.asa_acls:
     state: overridden
     config: "{{ asa_sot }}"
+
+- name: Manage Access Rules config
+  cisco.asa.asa_acls:
+    state: overridden
+    config: "{{ asa_sot2.gathered }}"
