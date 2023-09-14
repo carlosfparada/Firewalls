@@ -22,8 +22,10 @@
 - name: Configure access rules
   cisco.asa.asa_config:
     src: ../../templates/asa/sot-rules.j2
+  when: asa_sot is defined and asa_sot | length > 0
   register: result
-- name: Debug
+
+- name: Debug access rules
   debug:
     var: result
 

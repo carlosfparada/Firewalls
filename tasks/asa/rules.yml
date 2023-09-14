@@ -16,7 +16,7 @@
     lines:
     - "zone {{item.name}}"
   loop: "{{zones}}"
-  
+
 - name: Configure traffic zones interfaces
   cisco.asa.asa_config:
     lines:
@@ -30,6 +30,7 @@
   cisco.asa.asa_config:
     src: ../../templates/asa/rules.j2
   register: result
-- name: Debug
+  
+- name: Debug access rules
   debug:
     var: result
