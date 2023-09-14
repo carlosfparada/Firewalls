@@ -11,7 +11,7 @@
 
 - name: Set Firewall access rules
   set_fact:
-    asa_sot: "{{ gather.gathered.acls }}"
+    asa_sot: "{{ gather.gathered }}"
 
 # - name: Git checkout
 #   ansible.builtin.git:
