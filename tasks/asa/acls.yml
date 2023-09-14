@@ -26,4 +26,4 @@
   cisco.asa.asa_acls:
     state: overridden
     config: 
-      acls: "{{ asa_sot }}"
+      acls: "{{ asa_sot.acls }}"
