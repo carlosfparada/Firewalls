@@ -12,7 +12,7 @@
 - name: Create file with ASA SoT content
   ansible.builtin.copy:
     #content: "{{ gather.gathered | to_nice_yaml }}"
-    content: "{{ gather.gathered }}"
+    content: "{{ gather.gathered | to_yaml }}"
     dest: "/tmp/access-policies.yml"
 
 - name: Set branch name
