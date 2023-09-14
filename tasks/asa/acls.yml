@@ -28,5 +28,5 @@
 
 - name: Manage Access Rules config
   cisco.asa.asa_acls:
-    state: merge
+    state: overridden
     config: "{{ asa_sot }}"
