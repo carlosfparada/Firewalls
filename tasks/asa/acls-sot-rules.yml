@@ -18,7 +18,13 @@
     state: merged
     config: "{{ asa_sot }}"
 
-
+- name: Configure access rules
+  cisco.asa.asa_config:
+    src: ../../templates/asa/sot-rules.j2
+  register: result
+- name: Debug
+  debug:
+    var: result
 
 - name: Configure interfaces
   cisco.asa.asa_config:

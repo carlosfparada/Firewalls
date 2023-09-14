@@ -1,0 +1,5 @@
+#https://www.cisco.com/c/en/us/td/docs/security/asa/asa94/config-guides/cli/firewall/asa-94-firewall-config/access-rules.html
+#hostname(config)# access-group OUTSIDE out interface outside
+{% for rule in asa_fw_rules %}
+access-group {{rule.name}} {{rule.inout}} interface {{rule.interface}}
+{% endfor %}
