@@ -7,11 +7,10 @@
 
 - name: Debug 
   debug:
-    var: gather.gathered | to_nice_yaml
+    var: gather.gathered | to_yaml
 
 - name: Create file with ASA SoT content
   ansible.builtin.copy:
-    #content: "{{ gather.gathered | to_nice_yaml }}"
     content: "{{ gather.gathered | to_yaml }}"
     dest: "/tmp/access-policies.yml"
 
@@ -23,8 +22,6 @@
   ansible.builtin.expect:
     command: "su -"
     responses:
-      's password:':
-        - "Rfc1918!"
       '# ':
         - "mkdir /tmp/asa"
         - "cd /tmp/asa"
