@@ -9,7 +9,7 @@
       scope: 'global'
   register: backupinfo
 
-- name: Save the backup information.
+- name: Save the backup information to a file
   copy:
     content: '{{ backupinfo.meta.raw }}'
     dest: '/tmp/backup'
