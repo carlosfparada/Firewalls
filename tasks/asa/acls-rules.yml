@@ -7,7 +7,7 @@
 
 - name: Debug 
   debug:
-    var: gather.gathered | to_nice_yaml
+    var: gather.gathered | to_yaml
 
 - name: Set Firewall access rules
   set_fact:
