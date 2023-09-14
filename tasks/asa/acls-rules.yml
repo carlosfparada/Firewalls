@@ -26,12 +26,12 @@
     dest: /tmp/asa/
 
 - name: Get Firewall access rules 2
-  include_vars:
-    file: "/tmp/asa/access-policies.yml"
+  set_fact:
+    asa_sot2: "{{ lookup('file','/tmp/asa/access-policies.yml') | from_yaml }}"
 
 - name: Debug ASA SoT content file 2
   debug:
-    var: acls
+    var: asa_sot2
 
 - name: Manage Access Rules config 2
   cisco.asa.asa_acls:
