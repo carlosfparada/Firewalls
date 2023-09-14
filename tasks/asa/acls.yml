@@ -29,4 +29,4 @@
 - name: Manage Access Rules config
   cisco.asa.asa_acls:
     state: merge
-    config: "{{ asa_sot.acls }}"
+    config: "{{ asa_sot }}"
