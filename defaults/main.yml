@@ -177,7 +177,7 @@ asa_fw_rules:
       #logging_close: true
       #ips_sensor: "default"
   - name: rule_D
-    interface: "outside"
+    interface: "inside"
     inout: in
     src:
       interface: "outside"

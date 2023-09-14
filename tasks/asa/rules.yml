@@ -16,6 +16,7 @@
     lines:
     - "zone {{item.name}}"
   loop: "{{zones}}"
+  
 - name: Configure traffic zones interfaces
   cisco.asa.asa_config:
     lines:
