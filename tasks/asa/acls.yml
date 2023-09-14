@@ -9,7 +9,7 @@
   debug:
     var: gather.gathered | to_nice_yaml
 
-- name: Get Firewall access rules
+- name: Set Firewall access rules
   set_fact:
     asa_sot: "{{ gather.gathered.acls }}"
 
@@ -29,5 +29,4 @@
 - name: Manage Access Rules config
   cisco.asa.asa_acls:
     state: merge
-    config: 
-      acls: "{{ asa_sot.acls }}"
+    config: "{{ asa_sot.acls }}"
