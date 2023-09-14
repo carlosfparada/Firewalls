@@ -8,7 +8,7 @@
     params:
       scope: 'global'
   register: backupinfo
-
+ 
 - name: Debug backup content
   debug:
     var: backupinfo
@@ -37,3 +37,4 @@
   vars:
     ansible_user: "{{ backup_server_user }}"
     ansible_ssh_pass: "{{ backup_server_pass }}"
+
