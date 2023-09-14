@@ -44,5 +44,5 @@
 
 - name: Manage ASA SoT access rules config
   cisco.asa.asa_acls:
-    state: merged
+    state: deleted
     config: "{{ asa_sot }}"
