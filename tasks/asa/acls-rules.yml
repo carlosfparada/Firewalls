@@ -11,12 +11,14 @@
 
 - name: Set Firewall access rules
   set_fact:
-    asa_sot: "{{ gather.gathered }}"
+    asa_sot: "{{ gather.gathered | to_yaml }}"
 
 - name: Manage Access Rules config
   cisco.asa.asa_acls:
     state: overridden
     config: "{{ asa_sot }}"
+
+
 
 - name: Git checkout 2
   ansible.builtin.git:
