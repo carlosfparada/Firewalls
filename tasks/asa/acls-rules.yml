@@ -11,7 +11,7 @@
 
 - name: Set Firewall access rules
   set_fact:
-    asa_sot: "{{ gather.gathered | to_yaml }}"
+    asa_sot: "{{ gather.gathered }}"
 
 - name: Manage Access Rules config
   cisco.asa.asa_acls:
