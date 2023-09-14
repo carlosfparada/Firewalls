@@ -13,18 +13,18 @@
   set_fact:
     asa_sot: "{{ gather.gathered }}"
 
-# - name: Git checkout
-#   ansible.builtin.git:
-#     repo: 'https://github.com/carlosfparada/ASA-SoT.git'
-#     dest: /tmp/asa/
+- name: Git checkout
+  ansible.builtin.git:
+    repo: 'https://github.com/carlosfparada/ASA-SoT.git'
+    dest: /tmp/asa/
 
-# - name: Get Firewall access rules
-#   set_fact:
-#     asa_sot: "{{ lookup('file', '/tmp/asa/access-policies.yml') }}"
+- name: Get Firewall access rules
+  set_fact:
+    asa_sot2: "{{ lookup('file', '/tmp/asa/access-policies.yml') }}"
 
-# - name: Debug ASA SoT content file
-#   debug:
-#     var: asa_sot
+- name: Debug ASA SoT content file
+  debug:
+    var: asa_sot2
 
 - name: Manage Access Rules config
   cisco.asa.asa_acls:
