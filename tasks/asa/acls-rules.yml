@@ -1,30 +1,30 @@
 ---
 
-# - name: Gather Access Rules facts
-#   cisco.asa.asa_acls:
-#     state: gathered
-#   register: gather
+- name: Gather Access Rules facts
+  cisco.asa.asa_acls:
+    state: gathered
+  register: gather
 
-# - name: Debug 
-#   debug:
-#     var: gather.gathered | to_nice_yaml
-
-# - name: Set Firewall access rules
-#   set_fact:
-#     asa_sot: "{{ gather.gathered }}"
-
-- name: Git checkout
-  ansible.builtin.git:
-    repo: 'https://github.com/carlosfparada/ASA-SoT.git'
-    dest: /tmp/asa/
-
-- name: Get Firewall access rules
-  set_fact:
-    asa_sot: "{{ lookup('file', '/tmp/asa/access-policies.yml') }}"
-
-- name: Debug ASA SoT content file
+- name: Debug 
   debug:
-    var: asa_sot
+    var: gather.gathered | to_nice_yaml
+
+- name: Set Firewall access rules
+  set_fact:
+    asa_sot: "{{ gather.gathered }}"
+
+# - name: Git checkout
+#   ansible.builtin.git:
+#     repo: 'https://github.com/carlosfparada/ASA-SoT.git'
+#     dest: /tmp/asa/
+
+# - name: Get Firewall access rules
+#   set_fact:
+#     asa_sot: "{{ lookup('file', '/tmp/asa/access-policies.yml') }}"
+
+# - name: Debug ASA SoT content file
+#   debug:
+#     var: asa_sot
 
 - name: Manage Access Rules config
   cisco.asa.asa_acls:
