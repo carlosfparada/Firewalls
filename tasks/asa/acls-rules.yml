@@ -34,4 +34,4 @@
 - name: Manage Access Rules config 2
   cisco.asa.asa_acls:
     state: overridden
-    config: "{{ acls }}"
+    config: "{{ acls | list }}"
