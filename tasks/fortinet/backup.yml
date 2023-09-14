@@ -1,11 +1,11 @@
 ---
 
-- name: backup a_specific_vdom settings
+- name: Backup a Fortigate FW 
   fortios_system_config_backup_restore:
     vdom: "{{ fw_fg_vdom }}"
     access_token: "{{ fw_access_token }}"
     backup: "yes"
-    scope: "vdom"
+    scope: "global"
     filename: "/tmp/backup"
 
 
