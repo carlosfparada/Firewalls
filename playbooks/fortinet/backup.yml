@@ -45,7 +45,7 @@
   - name: Copy config to backup server
     copy:
       src: "/tmp/backup"
-      dest: "{{ backup_server_folder }}backup-fortinet-{{ now () }}"
+      dest: "{{ backup_server_folder }}backup-fortinet-"{{ '%Y-%m-%dT%H:%M:%S' | strftime(ansible_date_time.epoch) }}"
     become: true
     vars:
       ansible_user: "{{ backup_server_user }}"
