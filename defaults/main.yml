@@ -128,8 +128,6 @@ fg_fw_rules:
       ips_sensor: "default"
 
 backup_server: "backup-server"
-backup_server_user: "root"
-backup_server_pass: "centos"
 backup_server_folder: "/tmp/backup/"
 
 # Cisco ASA

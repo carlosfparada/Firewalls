@@ -1,13 +1,93 @@
 ---
-#config system global
-#  set rest-api enable
-#end
+
+- name: Find Fortigate backup Files
+  hosts: backup-server
+  connection: ssh
+  tasks:
+  - include_vars: ../../defaults/main.yml
+
+  - name: Find latest backup filename
+    ansible.builtin.find:
+      paths: "{{ backup_server_folder }}"
+      file_type: file
+      patterns: 'backup-fortinet*'
+      # hidden: true
+      use_regex: false
+    #delegate_to: "{{ backup_server }}"
+    become: yes
+    vars:
+      ansible_user: "{{ backup_server_user }}"
+      ansible_ssh_pass: "{{ backup_server_pass }}"
+    register: backup_files
+
+  - name: Get lastest backup ({{ (backup_files.files|last).path }})
+    set_fact: 
+      backup_file: "{{ (backup_files.files|last).path }}"
+
+  - name: Fetch config from backup
+    fetch:
+      src: "{{ backup_file }}"
+      dest: "/tmp/"
+      flat: true
+    when: backup_files | length > 0 
+    #delegate_to: "{{ backup_server }}"
+    vars:
+      ansible_user: "{{ backup_server_user }}"
+      ansible_ssh_pass: "{{ backup_server_pass }}"
+    register: tmp_backup_file
+
+
+
 - name: Firewalls Fortinet rules
   hosts: fortinet
   connection: httpapi
   gather_facts: no
-  
   tasks:
   - include_vars: ../../defaults/main.yml
+
+  #https://ansible-galaxy-fortios-docs.readthedocs.io/en/galaxy-2.0.0/faq.html
+  - name: Restore a Fortigate FW
+    fortinet.fortios.fortios_monitor:
+      vdom: "{{ fw_fg_vdom }}"
+      access_token: "{{ fw_access_token }}"
+      selector: 'restore.system.config'
+      params:
+        scope: 'global'
+         source: 'upload'
+#         vdom: 'root'
+         file_content: "{{ lookup( 'file', '/tmp/backup') | string | b64encode }}"
+    register: backupinfo
   
-  - include_tasks: ../../tasks/fortinet/restore.yml
+  - name: Debug backup content
+    debug:
+      var: backupinfo
+
+  - name: Save the backup information to a file
+    copy:
+      content: '{{ backupinfo.meta.raw }}'
+      dest: "/tmp/backup"
+
+- name: Store files via scp
+  hosts: backup-server
+  connection: ssh
+  tasks:
+  - include_vars: ../../defaults/main.yml
+
+  - name: Create backup folder on backup server
+    ansible.builtin.file:
+      path: "{{ backup_server_folder }}"
+      state: directory
+    become: true
+    # vars:
+    #   ansible_user: "{{ backup_server_user }}"
+    #   ansible_ssh_pass: "{{ backup_server_pass }}"
+
+  - name: Copy config to backup server
+    copy:
+      src: "/tmp/backup"
+      dest: "{{ backup_server_folder }}backup-fortinet-{{ '%Y-%m-%dT%H:%M:%S' | strftime(ansible_date_time.epoch) }}"
+    become: true
+    # vars:
+    #   ansible_user: "{{ backup_server_user }}"
+    #   ansible_ssh_pass: "{{ backup_server_pass }}"
+

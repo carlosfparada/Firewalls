@@ -26,7 +26,6 @@
       content: '{{ backupinfo.meta.raw }}'
       dest: "/tmp/backup"
 
-
 - name: Store files via scp
   hosts: backup-server
   connection: ssh
@@ -38,16 +37,11 @@
       path: "{{ backup_server_folder }}"
       state: directory
     become: true
-    # vars:
-    #   ansible_user: "{{ backup_server_user }}"
-    #   ansible_ssh_pass: "{{ backup_server_pass }}"
 
   - name: Copy config to backup server
     copy:
       src: "/tmp/backup"
       dest: "{{ backup_server_folder }}backup-fortinet-{{ '%Y-%m-%dT%H:%M:%S' | strftime(ansible_date_time.epoch) }}"
     become: true
-    # vars:
-    #   ansible_user: "{{ backup_server_user }}"
-    #   ansible_ssh_pass: "{{ backup_server_pass }}"
+
 
