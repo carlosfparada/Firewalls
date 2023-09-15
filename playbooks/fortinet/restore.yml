@@ -2,7 +2,7 @@
 
 - name: Find Fortigate backup Files
   hosts: backup-server
-  connection: ssh
+  #connection: ssh
   tasks:
   - include_vars: ../../defaults/main.yml
 
