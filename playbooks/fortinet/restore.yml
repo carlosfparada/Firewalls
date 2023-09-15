@@ -44,9 +44,9 @@
       selector: 'restore.system.config'
       params:
         scope: 'global'
-         source: 'upload'
-#         vdom: 'root'
-         file_content: "{{ lookup( 'file', '/tmp/backup') | string | b64encode }}"
+        source: 'upload'
+        # vdom: 'root'
+        file_content: "{{ lookup( 'file', '/tmp/backup') | string | b64encode }}"
     register: backupinfo
   
   - name: Debug backup content
