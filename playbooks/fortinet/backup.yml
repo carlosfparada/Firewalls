@@ -24,7 +24,7 @@
   - name: Save the backup information to a file
     copy:
       content: '{{ backupinfo.meta.raw }}'
-      dest: "/tmp/backup/{{ now() }}"
+      dest: "/tmp/backup"
 
 
 - name: Store files via scp
@@ -44,7 +44,7 @@
 
   - name: Copy config to backup server
     copy:
-      src: "/tmp/backup"
+      src: "/tmp/backup{{ now () }}"
       dest: "{{ backup_server_folder }}backup"
     become: true
     vars:
