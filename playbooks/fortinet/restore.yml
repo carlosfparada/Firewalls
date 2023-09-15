@@ -48,8 +48,8 @@
         vdom: "{{ fw_fg_vdom }}"
         file_content: "{{ lookup( 'file', '/tmp/backup') | string | b64encode }}"
     become: true
-    register: backupinfo
+    register: restoreinfo
   
   - name: Debug backup content
     debug:
-      var: backupinfo
+      var: restoreinfo
