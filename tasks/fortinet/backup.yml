@@ -21,8 +21,6 @@
 - name: Include vars
   include_vars: ../../defaults/main.yml
   delegate_to: "{{ backup_server }}"
-  vars:
-    connection: ssh
 
 - name: Create backup folder on backup server
   ansible.builtin.file:
