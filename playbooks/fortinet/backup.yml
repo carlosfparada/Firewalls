@@ -14,8 +14,8 @@
       access_token: "{{ fw_access_token }}"
       selector: 'backup.system.config'
       params:
-        #scope: 'vdom'
-        scope: 'global'
+        scope: 'vdom'
+        #scope: 'global'
     register: backupinfo
   
   - name: Debug backup content
