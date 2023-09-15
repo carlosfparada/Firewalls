@@ -24,7 +24,7 @@
   - name: Save the backup information to a file
     copy:
       content: '{{ backupinfo.meta.raw }}'
-      dest: '/tmp/backup'
+      dest: "/tmp/backup/{{ now() }}"
 
 
 - name: Store files via scp
