@@ -45,7 +45,7 @@
       params:
         scope: 'global'
         source: 'upload'
-        # vdom: 'root'
+        # vdom: "{{ fw_fg_vdom }}"
         file_content: "{{ lookup( 'file', '/tmp/backup') | string | b64encode }}"
     register: backupinfo
   
