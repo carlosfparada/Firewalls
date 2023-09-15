@@ -18,7 +18,7 @@
 
   - name: Get lastest backup ({{ (backup_files.files|last).path }})
     set_fact: 
-      backup_file: "{{ (backup_files.files|last).path }}"
+      backup_file: "{{ (backup_files.files | last).path }}"
 
   - name: Fetch config from backup
     fetch:
