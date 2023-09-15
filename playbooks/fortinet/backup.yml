@@ -33,9 +33,6 @@
   tasks:
   - include_vars: ../../defaults/main.yml
 
-  - debug:
-      msg: "{{ '%Y-%m-%dT%H:%M:%S' | strftime(ansible_date_time.epoch) }}"
-
   - name: Create backup folder on backup server
     ansible.builtin.file:
       path: "{{ backup_server_folder }}"
