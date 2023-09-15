@@ -13,32 +13,29 @@
   debug:
     var: backupinfo
 
-- name: Save the backup information to a file
-  copy:
-    content: '{{ backupinfo.meta.raw }}'
-    dest: '/tmp/backup'
 
-- name: Include vars
-  include_vars: ../../defaults/main.yml
-  delegate_to: "{{ backup_server }}"
+# backup_server: "backup-server"
+# backup_server_user: "root"
+# backup_server_pass: "centos"
+# backup_server_folder: "/tmp/backup/"
 
 - name: Create backup folder on backup server
   ansible.builtin.file:
-    path: "{{ backup_server_folder }}"
+    path: "/tmp/backup/"
     state: directory
   become: true
-  delegate_to: "{{ backup_server }}"
+  delegate_to: "backup-server"
   vars:
-    ansible_user: "{{ backup_server_user }}"
-    ansible_ssh_pass: "{{ backup_server_pass }}"
+    ansible_user: "root"
+    ansible_ssh_pass: "centos"
 
 - name: Copy config to backup server
   copy:
     src: "/tmp/backup"
-    dest: "{{ backup_server_folder }}{{ config.filename }}"
+    dest: "/tmp/backup/fortinet_backup"
   become: true
-  delegate_to: "{{ backup_server }}"
+  delegate_to: "backup-server"
   vars:
-    ansible_user: "{{ backup_server_user }}"
-    ansible_ssh_pass: "{{ backup_server_pass }}"
+    ansible_user: "root"
+    ansible_ssh_pass: "centos"
 

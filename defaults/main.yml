@@ -127,11 +127,6 @@ fg_fw_rules:
       logging_close: true
       ips_sensor: "default"
 
-backup_server: "backup-server"
-backup_server_user: "root"
-backup_server_pass: "centos"
-backup_server_folder: "/tmp/backup/"
-
 # Cisco ASA
 interfaces:
 - name: GigabitEthernet0/0
