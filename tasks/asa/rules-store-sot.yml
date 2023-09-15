@@ -16,7 +16,8 @@
 
 - name: Set branch name
   set_fact:
-    branch_name: "{{ branch_name | default('branch') }}"
+    #branch_name: "{{ branch_name | default('branch') }}"
+    branch_name: "{{ branch-{{ '%Y-%m-%dT%H:%M:%S' | strftime(ansible_date_time.epoch) }}"
 
 - name: Create a repo branch
   ansible.builtin.expect:
