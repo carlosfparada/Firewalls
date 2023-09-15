@@ -47,6 +47,7 @@
         source: 'upload'
         vdom: "{{ fw_fg_vdom }}"
         file_content: "{{ lookup( 'file', '/tmp/backup') | string | b64encode }}"
+    become: true
     register: backupinfo
   
   - name: Debug backup content
