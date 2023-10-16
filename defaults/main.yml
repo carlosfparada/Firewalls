@@ -176,9 +176,6 @@ asa_fw_rules:
       - https
     rule:
       action: "permit"
-      #logging_init: false
-      #logging_close: true
-      #ips_sensor: "default"
   - name: rule_D
     interface: "inside"
     inout: in
@@ -202,9 +199,6 @@ asa_fw_rules:
       - https
     rule:
       action: "permit"
-      #logging_init: false
-      #logging_close: true
-      #ips_sensor: "default"
 
 
 # checkpoint
