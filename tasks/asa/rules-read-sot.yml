@@ -19,11 +19,11 @@
     config: "{{ asa_sot }}"
   when: asa_sot is defined and asa_sot | length > 0
 
-- name: Manage ASA SoT access rules config
+- name: Manage ASA SoT access rules config (empty rules list case)
   cisco.asa.asa_acls:
     state: overridden
     config:
-      - acls:
+      acls:
   when: asa_sot is defined and asa_sot | length == 0
 
 - name: Configure access rules
