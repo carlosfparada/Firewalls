@@ -3,6 +3,7 @@
 - name: Firewalls ASA facts
   hosts: asa
   connection: network_cli
+  become: true
   gather_facts: no
   
   tasks:
