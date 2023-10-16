@@ -3,8 +3,8 @@
 - name: Firewalls ASA facts
   hosts: asa
   connection: network_cli
-  become: true
   gather_facts: no
+  become: true
   
   tasks:
   - include_vars: ../../defaults/main.yml
