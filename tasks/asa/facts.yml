@@ -17,6 +17,6 @@
     state: gathered
   register: gather
 
-- name: Debug 
+- name: Debug Access Rules
   debug:
     var: gather.gathered | to_yaml
