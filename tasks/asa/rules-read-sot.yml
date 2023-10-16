@@ -17,7 +17,7 @@
   cisco.asa.asa_acls:
     state: overridden
     config: "{{ asa_sot }}"
-  when: asa_sot is defined and asa_sot | length > 0
+  #when: asa_sot is defined and asa_sot | length > 0
 
 - name: Configure access rules
   cisco.asa.asa_config:
