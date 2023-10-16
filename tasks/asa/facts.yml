@@ -8,14 +8,15 @@
       - config
   register: _asa_facts
 
-- name: Debug
+- name: Debug facts
   debug:
     var: _asa_facts
 
-# New
+- name: Gather Access Rules facts
+  cisco.asa.asa_acls:
+    state: gathered
+  register: gather
 
-- name: Gather facts from Cisco ASA (command)
-  cisco.asa.asa_command:
-    commands:
-      - show
-  register: _asa_facts
+- name: Debug 
+  debug:
+    var: gather.gathered | to_yaml
