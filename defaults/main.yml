@@ -32,7 +32,7 @@ fw_rules:
           ipv4: "7.7.7.2"
     services:
       - http
-      #- https
+      - https
     rule:
       action: "permit"
       logging_init: false
@@ -55,7 +55,7 @@ fw_rules:
           ipv4: "7.7.7.2"
     services:
       - http
-      #- https
+      - https
     rule:
       action: "permit"
       logging_init: false
