@@ -25,7 +25,7 @@
   - name: Save the backup information to a file
     copy:
       content: '{{ backupinfo.meta.raw }}'
-      dest: "/tmp/backup"
+      dest: "/tmp/local.backup"
 
 - name: Store files via scp
   hosts: backup-server
@@ -41,7 +41,7 @@
 
   - name: Copy config to backup server
     copy:
-      src: "/tmp/backup"
+      src: "/tmp/local.backup"
       dest: "{{ backup_server_folder }}backup-fortinet-{{ '%Y-%m-%dT%H:%M:%S' | strftime(ansible_date_time.epoch) }}"
     become: true
 
