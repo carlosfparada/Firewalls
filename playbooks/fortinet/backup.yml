@@ -45,7 +45,7 @@
       dest: "{{ backup_server_folder }}backup-fortinet-{{ '%Y-%m-%dT%H:%M:%S' | strftime(ansible_date_time.epoch) }}"
     become: true
 
-  #https://ansible-galaxy-fortios-docs.readthedocs.io/en/galaxy-2.0.0/faq.html
+  # https://ansible-galaxy-fortios-docs.readthedocs.io/en/galaxy-2.0.0/faq.html
   - name: Restore a Fortigate FW
     fortinet.fortios.fortios_monitor:
       vdom: "{{ fw_fg_vdom }}"
