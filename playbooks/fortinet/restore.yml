@@ -23,7 +23,7 @@
   - name: Fetch config from backup
     fetch:
       src: "{{ backup_file }}"
-      dest: "/tmp/backup"
+      dest: "/tmp/local.backup"
       flat: true
     when: backup_files | length > 0 
     register: tmp_backup_file
@@ -43,8 +43,8 @@
       access_token: "{{ fw_access_token }}"
       selector: 'restore.system.config'
       params:
-        #scope: 'global'
-        scope: 'vdom'
+        scope: 'global'
+        #scope: 'vdom'
         source: 'upload'
         vdom: "{{ fw_fg_vdom }}"
         file_content: "{{ lookup( 'file', '/tmp/backup') | string | b64encode }}"
