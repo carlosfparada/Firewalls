@@ -14,8 +14,8 @@
       access_token: "{{ fw_access_token }}"
       selector: 'backup.system.config'
       params:
-        #scope: 'vdom'
-        scope: 'global'
+        scope: 'vdom'
+        #scope: 'global'
     register: backupinfo
   
   - name: Debug backup content
@@ -58,5 +58,5 @@
   - name: Copy config to backup server
     copy:
       src: "/tmp/local.backup"
-      dest: "{{ backup_server_folder }}backup-fortinet-{{ '%Y-%m-%dT%H:%M:%S' | strftime(ansible_date_time.epoch) }}"
+      dest: "{{ backup_server_folder }}fortinet-{{ '%Y-%m-%dT%H:%M:%S' | strftime(ansible_date_time.epoch) }}"
     become: true
