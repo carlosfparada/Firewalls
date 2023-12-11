@@ -27,6 +27,23 @@
       content: '{{ backupinfo.meta.raw }}'
       dest: "/tmp/local.backup"
 
+
+  # https://ansible-galaxy-fortios-docs.readthedocs.io/en/galaxy-2.0.0/faq.html
+  - name: Restore a Fortigate FW
+    fortinet.fortios.fortios_monitor:
+      vdom: "{{ fw_fg_vdom }}"
+      access_token: "{{ fw_access_token }}"
+      selector: 'restore.system.config'
+      params:
+        #scope: 'global'
+        scope: 'vdom'
+        source: 'upload'
+        vdom: "{{ fw_fg_vdom }}"
+        file_content: "{{ lookup( 'file', '/tmp/local.backup') | string | b64encode }}"
+    become: true
+    register: restoreinfo
+
+
 - name: Store files via scp
   hosts: backup-server
   connection: ssh
@@ -44,18 +61,3 @@
       src: "/tmp/local.backup"
       dest: "{{ backup_server_folder }}backup-fortinet-{{ '%Y-%m-%dT%H:%M:%S' | strftime(ansible_date_time.epoch) }}"
     become: true
-
-  # https://ansible-galaxy-fortios-docs.readthedocs.io/en/galaxy-2.0.0/faq.html
-  - name: Restore a Fortigate FW
-    fortinet.fortios.fortios_monitor:
-      vdom: "{{ fw_fg_vdom }}"
-      access_token: "{{ fw_access_token }}"
-      selector: 'restore.system.config'
-      params:
-        #scope: 'global'
-        scope: 'vdom'
-        source: 'upload'
-        vdom: "{{ fw_fg_vdom }}"
-        file_content: "{{ lookup( 'file', '/tmp/local.backup') | string | b64encode }}"
-    become: true
-    register: restoreinfo
