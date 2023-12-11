@@ -15,7 +15,7 @@
       selector: 'backup.system.config'
       params:
         scope: 'vdom'
-        #scope: 'global'
+        scope: 'global'
     register: backupinfo
   
   - name: Debug backup content
@@ -24,7 +24,7 @@
 
   - name: Save the backup information to a file
     copy:
-      content: '{{ backupinfo.meta.raw }}'
+      content: "{{ backupinfo.meta.raw }}"
       dest: "/tmp/local.backup"
 
 
@@ -39,7 +39,7 @@
         scope: 'vdom'
         source: 'upload'
         vdom: "{{ fw_fg_vdom }}"
-        file_content: "{{ lookup( 'file', '/tmp/local.backup') | string | b64encode }}"
+        file_content: "{{ backupinfo.meta.raw | string | b64encode }}"
     become: true
     register: restoreinfo
 
