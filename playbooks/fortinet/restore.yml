@@ -47,7 +47,7 @@
         #scope: 'vdom'
         source: 'upload'
         vdom: "{{ fw_fg_vdom }}"
-        file_content: "{{ lookup( 'file', '/tmp/backup') | string | b64encode }}"
+        file_content: "{{ lookup( 'file', '/tmp/local.backup') | string | b64encode }}"
     become: true
     register: restoreinfo
   
