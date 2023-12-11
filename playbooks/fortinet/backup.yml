@@ -27,7 +27,6 @@
       content: "{{ backupinfo.meta.raw }}"
       dest: "/tmp/local.backup"
 
-
   # #https://ansible-galaxy-fortios-docs.readthedocs.io/en/galaxy-2.0.0/faq.html
   # - name: Restore a Fortigate FW
   #   fortinet.fortios.fortios_monitor:
