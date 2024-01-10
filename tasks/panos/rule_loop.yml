@@ -7,6 +7,17 @@
     _services: []
     _action: "{{ 'allow' if _rule.rule.action == 'permit' else 'deny' }}"
 
+# Create an L3 zone.
+- name: Create private and public DMZ zone
+  paloaltonetworks.panos.panos_zone:
+    provider: "{{ panos_provider }}"
+    zone: item
+    mode: 'layer3'
+    #zone_profile: 'strict'
+  with_items:
+    - public
+    - private
+
 - name: Generate list of source addresses
   set_fact: 
     _src_ips: "{{ _src_ips + [item.ipv4] }}"
