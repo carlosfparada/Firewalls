@@ -8,7 +8,7 @@
     _action: "{{ 'allow' if _rule.rule.action == 'permit' else 'deny' }}"
 
 # Create an L3 zone.
-- name: Create private and public DMZ zone
+- name: Create private and public zone
   paloaltonetworks.panos.panos_zone:
     provider: "{{ panos_provider }}"
     zone: item
