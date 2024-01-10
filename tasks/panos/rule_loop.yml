@@ -53,5 +53,5 @@
     application: ['any']
     service: "{{ _services }}"
     action: "{{ _action }}"
-    log_setting: default
+    #log_setting: default
     commit: "False"
