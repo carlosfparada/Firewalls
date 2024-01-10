@@ -11,7 +11,7 @@
 - name: Create private and public zone
   paloaltonetworks.panos.panos_zone:
     provider: "{{ panos_provider }}"
-    zone: item
+    zone: "{{ item }}"
     mode: 'layer3'
     #zone_profile: 'strict'
   with_items:
